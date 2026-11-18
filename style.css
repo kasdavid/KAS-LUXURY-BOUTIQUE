@@ -465,7 +465,6 @@ section {
     display: block;
 }
 
-
 /* =========================================
    MOBILE RESPONSIVENESS - KAS LUXURY
 ========================================= */
@@ -677,124 +676,6 @@ section {
     color: var(--gold);
 }
 
-/* =====================================================
-   10. HERO IMAGE - FULL IMAGE DISPLAY
-===================================================== */
-
-.hero-model {
-    position: relative;
-    width: 100%;
-    max-width: 750px;
-    justify-self: end;
-}
-
-/* IMAGE FRAME */
-
-.hero-image-frame {
-    position: relative;
-    width: 100%;
-
-    /* Preserve original 1280 × 720 image ratio */
-    aspect-ratio: 16 / 9;
-    height: auto;
-
-    overflow: hidden;
-
-    border: 1px solid var(--border);
-    border-radius: 4px;
-
-    box-shadow: 20px 20px 0 rgba(212, 175, 55, 0.08);
-}
-
-/* FULL IMAGE - NO CROPPING */
-
-.hero-image-frame img {
-    display: block;
-
-    width: 100%;
-    height: 100%;
-
-    object-fit: contain !important;
-    object-position: center;
-
-    transition: transform 0.8s ease;
-}
-
-/* SUBTLE HOVER EFFECT */
-
-.hero-image-frame:hover img {
-    transform: scale(1.02);
-}
-
-/* IMAGE OVERLAY */
-
-.hero-image-frame::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
-
-    background: linear-gradient(
-        to top,
-        rgba(0, 0, 0, 0.25),
-        transparent 55%
-    );
-
-    pointer-events: none;
-}
-
-/* IMAGE CAPTION */
-
-.hero-image-caption {
-    display: flex;
-    flex-direction: column;
-    gap: 7px;
-    margin-top: 22px;
-}
-
-.hero-image-caption span {
-    color: var(--gold);
-    font-family: var(--font-heading);
-    font-size: 20px;
-}
-
-.hero-image-caption small {
-    color: var(--grey);
-    font-size: 11px;
-    letter-spacing: 2px;
-}
-
-/* TABLET */
-
-@media (max-width: 992px) {
-    .hero-model {
-        max-width: 100%;
-    }
-}
-
-/* MOBILE */
-
-@media (max-width: 768px) {
-    .hero-model {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .hero-image-frame {
-        width: 100%;
-        aspect-ratio: 16 / 9;
-        height: auto;
-    }
-}
-
-/* SMALL MOBILE */
-
-@media (max-width: 480px) {
-    .hero-image-frame {
-        aspect-ratio: 16 / 9;
-        height: auto;
-    }
-}
 
 
 /* =====================================================
