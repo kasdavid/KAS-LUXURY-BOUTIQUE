@@ -1,0 +1,802 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Discover premium men's and women's fashion, luxury clothing, shoes and accessories at KAS LUXURY BOUTIQUE.">
+
+    <meta name="theme-color" content="#080808">
+
+    <title>KAS LUXURY BOUTIQUE | Premium Fashion Store</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- STYLESHEETS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <!-- JAVASCRIPT -->
+    <script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</head>
+
+<body>
+
+    <div class="animated-background">
+
+    <div class="animated-words">
+
+        <div class="word-track">
+            <span>KAS LUXURY</span>
+            <span>PREMIUM FASHION</span>
+            <span>LUXURY COLLECTION</span>
+            <span>KAS LUXURY</span>
+        </div>
+
+        <div class="word-track">
+            <span>STYLE WITH CLASS</span>
+            <span>ELEGANCE</span>
+            <span>PREMIUM QUALITY</span>
+            <span>STYLE WITH CLASS</span>
+        </div>
+
+        <div class="word-track">
+            <span>MEN COLLECTION</span>
+            <span>WOMEN COLLECTION</span>
+            <span>TIMELESS STYLE</span>
+            <span>MEN COLLECTION</span>
+        </div>
+
+    </div>
+
+</div>
+    <!-- =====================================
+         ANNOUNCEMENT BAR
+    ====================================== -->
+
+    <div class="announcement-bar">
+
+        <p>
+            <i class="fas fa-crown"></i>
+            WELCOME TO KAS LUXURY BOUTIQUE
+            <span>Elegance • Confidence • Style</span>
+        </p>
+
+    </div>
+
+    <!-- =====================================
+         HEADER
+    ====================================== -->
+
+    <header class="site-header">
+
+        <div class="container header-main">
+
+            <!-- BRAND LOGO -->
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </span>
+
+                <span class="logo-text">
+                    KAS <strong>LUXURY</strong>
+                    <small>BOUTIQUE</small>
+                </span>
+
+            </a>
+
+            <!-- SEARCH BAR -->
+
+            <form class="search-box" id="searchForm" role="search">
+
+                <input
+                    type="search"
+                    id="siteSearch"
+                    placeholder="Search fashion, shoes and accessories..."
+                    aria-label="Search products">
+
+                <button type="submit" aria-label="Search">
+                    <i class="fas fa-search"></i>
+                </button>
+
+            </form>
+
+            <!-- HEADER ACTIONS -->
+
+            <div class="header-actions">
+
+                <a href="login.html" class="header-action">
+                    <i class="far fa-user"></i>
+                    <span>Account</span>
+                </a>
+
+                <a href="wishlist.html" class="header-action">
+                    <i class="far fa-heart"></i>
+                    <span>Wishlist</span>
+                    <b id="wishlistCount">0</b>
+                </a>
+
+                <a href="cart.html" class="header-action">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Cart</span>
+                    <b id="cartCount">0</b>
+                </a>
+
+            </div>
+
+            <!-- MOBILE MENU BUTTON -->
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false"
+                aria-controls="navMenu">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+        </div>
+
+        <!-- MAIN NAVIGATION -->
+
+        <nav class="main-navigation">
+
+            <div class="container">
+
+                <ul class="nav-menu" id="navMenu">
+
+                    <li>
+                        <a href="index.html" class="nav-link active">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="shop.html" class="nav-link">Shop All</a>
+                    </li>
+
+                    <li>
+                        <a href="men.html" class="nav-link">Men</a>
+                    </li>
+
+                    <li>
+                        <a href="women.html" class="nav-link">Women</a>
+                    </li>
+
+                    <li>
+                        <a href="shoes.html" class="nav-link">Shoes</a>
+                    </li>
+
+                    <li>
+                        <a href="accessories.html" class="nav-link">Accessories</a>
+                    </li>
+
+                    <li>
+                        <a href="about.html" class="nav-link">About Us</a>
+                    </li>
+
+                    <li>
+                        <a href="contact.html" class="nav-link">Contact</a>
+                    </li>
+
+<li>
+                        <a href="login.html" class="nav-link">Login</a>
+                    </li>
+
+                </ul>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+    <!-- =====================================
+         MAIN WEBSITE CONTENT
+    ====================================== -->
+
+    <main>
+
+        <!-- =================================
+             HERO SECTION
+        ================================== -->
+
+        <section class="hero-section">
+
+            <div class="container hero-content">
+
+                <div class="hero-text">
+
+                    <span class="hero-label">
+                        <i class="fas fa-crown"></i>
+                        THE LUXURY COLLECTION
+                    </span>
+
+                    <h1>
+                        Discover Your
+                        <span>Signature Style.</span>
+                    </h1>
+
+                    <p>
+                        Experience fashion beyond ordinary.
+                        Discover premium men's and women's
+                        collections designed for confidence,
+                        elegance and timeless style.
+                    </p>
+
+                    <div class="hero-buttons">
+
+                        <a href="shop.html" class="btn-gold">
+                            Explore Collection
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+
+                        <a href="about.html" class="btn-outline">
+                            Discover Our Story
+                        </a>
+
+                    </div>
+
+                    <div class="hero-trust">
+
+                        <span>
+                            <i class="fas fa-gem"></i>
+                            Premium Fashion
+                        </span>
+
+                        <span>
+                            <i class="fas fa-star"></i>
+                            Timeless Elegance
+                        </span>
+
+                    </div>
+
+                </div>
+
+                <!-- HERO FASHION IMAGE -->
+
+                <div class="hero-model">
+
+                    <div class="hero-image-frame">
+
+                        <img
+                            src="images/card6.jpg.jpeg"
+                            alt="Men's premium fashion editorial"
+                            fetchpriority="high">
+
+                    </div>
+
+                    <div class="hero-image-caption">
+
+                        <span>KAS LUXURY BOUTIQUE</span>
+
+                        <small>
+                            Elegance • Confidence • Style
+                        </small>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+             CATEGORY SECTION
+        ================================== -->
+
+        <section class="category-section" id="categories">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>EXPLORE YOUR STYLE</span>
+
+                    <h2>Shop By Category</h2>
+
+                    <p>
+                        Discover collections made for every style
+                        and every occasion.
+                    </p>
+
+                </div>
+
+                <div class="category-grid">
+
+                    <!-- MEN -->
+
+                    <a href="men.html" class="category-card">
+
+                        <div class="category-image">
+
+                            <img
+                                src="images/card4.jpg.jpeg"
+                                alt="Men's luxury clothing"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="category-info">
+
+                            <h3>Men's Collection</h3>
+
+                            <span>
+                                Explore Men
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                    <!-- WOMEN -->
+
+                    <a href="women.html" class="category-card">
+
+                        <div class="category-image">
+
+                            <img
+                                src="images/card7.jpg.jpeg"
+                                alt="Women's fashion collection"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="category-info">
+
+                            <h3>Women's Collection</h3>
+
+                            <span>
+                                Explore Women
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                    <!-- SHOES -->
+
+                    <a href="shoes.html" class="category-card">
+
+                        <div class="category-image">
+
+                            <img
+                                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=800&auto=format&fit=crop"
+                                alt="Premium fashion sneakers"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="category-info">
+
+                            <h3>Luxury Shoes</h3>
+
+                            <span>
+                                Explore Shoes
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                    <!-- ACCESSORIES -->
+
+                    <a href="accessories.html" class="category-card">
+
+                        <div class="category-image">
+
+                            <img
+                                src="images/card8.jpg.jpeg"
+                                alt="Luxury handbags and accessories"
+                                loading="lazy">
+
+                        </div>
+
+                        <div class="category-info">
+
+                            <h3>Accessories</h3>
+
+                            <span>
+                                Explore Accessories
+                                <i class="fas fa-arrow-right"></i>
+                            </span>
+
+                        </div>
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+             BENEFITS
+        ================================== -->
+
+        <section class="benefits-section">
+
+            <div class="container benefits-grid">
+
+                <div class="benefit-item">
+
+                    <i class="fas fa-gem"></i>
+
+                    <div>
+                        <h3>Premium Fashion</h3>
+                        <p>Style with distinction.</p>
+                    </div>
+
+                </div>
+
+                <div class="benefit-item">
+
+                    <i class="fas fa-shopping-bag"></i>
+
+                    <div>
+                        <h3>Easy Shopping</h3>
+                        <p>A simple shopping experience.</p>
+                    </div>
+
+                </div>
+
+                <div class="benefit-item">
+
+                    <i class="fas fa-headset"></i>
+
+                    <div>
+                        <h3>Customer Support</h3>
+                        <p>Here to assist you.</p>
+                    </div>
+
+                </div>
+
+                <div class="benefit-item">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                    <div>
+                        <h3>Secure Shopping</h3>
+                        <p>Shop with confidence.</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+             FEATURED PRODUCTS
+        ================================== -->
+
+        <section class="products-section" id="bestSellers">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>CURATED FOR YOU</span>
+
+                    <h2>Featured Collection</h2>
+
+                    <p>
+                        Discover our selection of fashion essentials.
+                    </p>
+
+                </div>
+
+                <div class="products-grid" id="featuredProducts">
+
+                    <!-- PRODUCTS WILL BE DISPLAYED USING JAVASCRIPT -->
+
+                </div>
+
+                <div class="section-footer">
+
+                    <a href="shop.html" class="btn-outline">
+                        Explore All Products
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+             PROMOTIONAL BANNER
+        ================================== -->
+
+        <section class="promo-section">
+
+            <div class="container promo-content">
+
+                <span>YOUR STYLE. YOUR STATEMENT.</span>
+
+                <h2>
+                    Fashion Is More Than
+                    <strong>What You Wear.</strong>
+                </h2>
+
+                <p>
+                    It's how you express yourself.
+                    Discover your next signature look.
+                </p>
+
+                <a href="shop.html" class="btn-gold">
+                    Shop The Collection
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+             CUSTOMER REVIEWS
+        ================================== -->
+
+        <section class="testimonials-section">
+
+            <div class="container">
+
+                <div class="section-heading">
+
+                    <span>THE KAS EXPERIENCE</span>
+
+                    <h2>Customer Experiences</h2>
+
+                    <p>
+                        A space for our customers to share
+                        their shopping experiences.
+                    </p>
+
+                </div>
+
+                <div class="testimonial-grid">
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "A beautiful shopping experience
+                            starts with finding your own style."
+                        </p>
+
+                        <h3>Fashion & Confidence</h3>
+
+                    </article>
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Luxury is about feeling confident
+                            in what you wear."
+                        </p>
+
+                        <h3>Elegance & Style</h3>
+
+                    </article>
+
+                    <article class="testimonial-card">
+
+                        <div class="testimonial-stars">
+                            ★★★★★
+                        </div>
+
+                        <p>
+                            "Discover the pieces that make
+                            every outfit special."
+                        </p>
+
+                        <h3>Personal Expression</h3>
+
+                    </article>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- =================================
+             NEWSLETTER
+        ================================== -->
+
+        <section class="newsletter-section">
+
+            <div class="container newsletter-content">
+
+                <div>
+
+                    <span>STAY IN STYLE</span>
+
+                    <h2>Join The KAS Community</h2>
+
+                    <p>
+                        Get updates about new arrivals,
+                        collections and boutique announcements.
+                    </p>
+
+                </div>
+
+                <form class="newsletter-form" id="newsletterForm">
+
+                    <input
+                        type="email"
+                        id="newsletterEmail"
+                        placeholder="Enter your email address"
+                        aria-label="Email address"
+                        required>
+
+                    <button type="submit" class="btn-gold">
+                        Subscribe
+                        <i class="fas fa-arrow-right"></i>
+                    </button>
+
+                </form>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <footer class="site-footer">
+
+        <div class="container footer-grid">
+
+            <!-- BRAND -->
+
+            <div class="footer-brand">
+
+                <a href="index.html" class="brand-logo">
+
+                    <span class="logo-icon">
+                        <i class="fas fa-crown"></i>
+                    </span>
+
+                    <span class="logo-text">
+                        KAS <strong>LUXURY</strong>
+                        <small>BOUTIQUE</small>
+                    </span>
+
+                </a>
+
+                <p>
+                    Elegance • Confidence • Style.
+                    Discover fashion that expresses who you are.
+                </p>
+
+                <div class="social-links">
+
+                    <a href="#" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+
+                    <a href="#" aria-label="TikTok">
+                        <i class="fab fa-tiktok"></i>
+                    </a>
+
+                </div>
+
+            </div>
+
+            <!-- QUICK LINKS -->
+
+            <div class="footer-column">
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a>
+                <a href="shop.html">Shop All</a>
+                <a href="about.html">About Us</a>
+                <a href="contact.html">Contact</a>
+
+            </div>
+
+            <!-- COLLECTIONS -->
+
+            <div class="footer-column">
+
+                <h3>Collections</h3>
+
+                <a href="men.html">Men's Fashion</a>
+                <a href="women.html">Women's Fashion</a>
+                <a href="shoes.html">Shoes</a>
+                <a href="accessories.html">Accessories</a>
+
+            </div>
+
+            <!-- CUSTOMER SERVICE -->
+
+            <div class="footer-column">
+
+                <h3>Customer Service</h3>
+
+                <a href="login.html">My Account</a>
+                <a href="cart.html">Shopping Cart</a>
+                <a href="wishlist.html">Wishlist</a>
+                <a href="contact.html">Help & Support</a>
+
+            </div>
+
+        </div>
+
+        <!-- FOOTER BOTTOM -->
+
+        <div class="footer-bottom">
+
+            <div class="container">
+
+                <p>
+                    &copy; <span id="currentYear"></span>
+                    KAS LUXURY BOUTIQUE.
+                    All Rights Reserved.
+                </p>
+
+                <p>
+                    Designed with <i class="fas fa-heart"></i>
+                    for elegance.
+                </p>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+    <!-- =====================================
+         BACK TO TOP
+    ====================================== -->
+
+    <button
+        id="backToTop"
+        class="back-to-top"
+        aria-label="Back to top">
+
+        <i class="fas fa-arrow-up"></i>
+
+    </button>
+
+</body>
+</html>

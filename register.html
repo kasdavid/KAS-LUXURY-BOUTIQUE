@@ -1,0 +1,1233 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Create your KAS LUXURY BOUTIQUE customer account.">
+
+    <meta name="theme-color" content="#080808">
+
+    <title>Create Account | KAS LUXURY BOUTIQUE</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- WEBSITE CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+
+        /* =====================================
+           REGISTRATION VARIABLES
+        ===================================== */
+
+        :root {
+            --register-gold: #d4af37;
+            --register-gold-light: #f5d879;
+            --register-black: #080808;
+            --register-card: #151515;
+            --register-white: #ffffff;
+            --register-grey: #aaaaaa;
+        }
+
+
+        /* =====================================
+           GENERAL
+        ===================================== */
+
+        body {
+            background: var(--register-black);
+            color: var(--register-white);
+            min-height: 100vh;
+        }
+
+        .register-page {
+            position: relative;
+            z-index: 1;
+        }
+
+
+        /* =====================================
+           MAIN LAYOUT
+        ===================================== */
+
+        .register-container {
+            min-height: 85vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 65px 20px;
+        }
+
+
+        /* =====================================
+           REGISTER CARD
+        ===================================== */
+
+        .register-card {
+            width: 100%;
+            max-width: 570px;
+            padding: 45px;
+            background: linear-gradient(145deg, #191919, #0d0d0d);
+            border: 1px solid #383838;
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+        }
+
+
+        /* =====================================
+           BRAND
+        ===================================== */
+
+        .register-brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-brand-icon {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            border: 1px solid var(--register-gold);
+            border-radius: 50%;
+            color: var(--register-gold);
+            font-size: 25px;
+        }
+
+        .register-brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        .register-brand h1 span {
+            color: var(--register-gold);
+        }
+
+        .register-brand p {
+            color: var(--register-grey);
+            font-size: 11px;
+            letter-spacing: 2px;
+            margin-top: 9px;
+        }
+
+
+        /* =====================================
+           HEADING
+        ===================================== */
+
+        .register-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .register-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .register-heading p {
+            color: var(--register-grey);
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+
+        /* =====================================
+           FORM
+        ===================================== */
+
+        .register-form {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .register-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .register-form-group.full-width {
+            grid-column: 1 / -1;
+        }
+
+        .register-form-group label {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .register-input-wrapper {
+            position: relative;
+        }
+
+        .register-input-wrapper > i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--register-gold);
+            font-size: 14px;
+        }
+
+        .register-input-wrapper input,
+        .register-form-group select {
+            width: 100%;
+            padding: 15px 43px;
+            background: #090909;
+            color: white;
+            border: 1px solid #3c3c3c;
+            border-radius: 3px;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .register-form-group select {
+            padding: 15px;
+        }
+
+        .register-input-wrapper input:focus,
+        .register-form-group select:focus {
+            border-color: var(--register-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+        }
+
+        .register-input-wrapper input::placeholder {
+            color: #777;
+        }
+
+        .register-form-group select option {
+            background: #111;
+            color: white;
+        }
+
+
+        /* =====================================
+           PASSWORD TOGGLE
+        ===================================== */
+
+        .register-password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .register-password-toggle:hover {
+            color: var(--register-gold);
+        }
+
+
+        /* =====================================
+           PASSWORD STRENGTH
+        ===================================== */
+
+        .password-strength {
+            display: none;
+            margin-top: 9px;
+        }
+
+        .password-strength.show {
+            display: block;
+        }
+
+        .strength-track {
+            height: 5px;
+            background: #333;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .strength-fill {
+            width: 0;
+            height: 100%;
+            background: #e74c3c;
+            transition: 0.3s;
+        }
+
+        .strength-label {
+            display: block;
+            margin-top: 7px;
+            color: #999;
+            font-size: 11px;
+        }
+
+
+        /* =====================================
+           TERMS
+        ===================================== */
+
+        .register-terms {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            color: #aaa;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .register-terms input {
+            margin-top: 5px;
+            accent-color: var(--register-gold);
+        }
+
+        .register-terms a {
+            color: var(--register-gold);
+            text-decoration: none;
+        }
+
+        .register-terms a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================
+           REGISTER BUTTON
+        ===================================== */
+
+        .register-submit-btn {
+            grid-column: 1 / -1;
+            padding: 16px;
+            background: var(--register-gold);
+            color: #080808;
+            border: none;
+            font-size: 13px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .register-submit-btn:hover {
+            background: var(--register-gold-light);
+            transform: translateY(-2px);
+        }
+
+        .register-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+
+        /* =====================================
+           GOOGLE BUTTON
+        ===================================== */
+
+        .register-divider {
+            grid-column: 1 / -1;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #777;
+            font-size: 12px;
+            margin: 10px 0;
+        }
+
+        .register-divider::before,
+        .register-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #333;
+        }
+
+        .google-register-btn {
+            grid-column: 1 / -1;
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid #444;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .google-register-btn:hover {
+            border-color: var(--register-gold);
+            background: #1b1b1b;
+        }
+
+        .google-register-btn i {
+            color: #4285F4;
+            font-size: 17px;
+        }
+
+
+        /* =====================================
+           MESSAGES
+        ===================================== */
+
+        .register-message {
+            grid-column: 1 / -1;
+            display: none;
+            padding: 13px;
+            font-size: 12px;
+            line-height: 1.8;
+            border-radius: 3px;
+        }
+
+        .register-message.error {
+            display: block;
+            background: rgba(220, 53, 69, 0.12);
+            color: #ff8b95;
+            border: 1px solid #a83240;
+        }
+
+        .register-message.success {
+            display: block;
+            background: rgba(40, 167, 69, 0.12);
+            color: #7de59b;
+            border: 1px solid #287c42;
+        }
+
+
+        /* =====================================
+           LOGIN LINK
+        ===================================== */
+
+        .login-prompt {
+            grid-column: 1 / -1;
+            text-align: center;
+            margin-top: 10px;
+            color: var(--register-grey);
+            font-size: 13px;
+        }
+
+        .login-prompt a {
+            color: var(--register-gold);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .login-prompt a:hover {
+            text-decoration: underline;
+        }
+
+
+        /* =====================================
+           SECURITY NOTICE
+        ===================================== */
+
+        .register-security {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .register-security i {
+            color: var(--register-gold);
+            margin-right: 5px;
+        }
+
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 600px) {
+
+            .register-container {
+                padding: 40px 15px;
+            }
+
+            .register-card {
+                padding: 32px 22px;
+            }
+
+            .register-form {
+                grid-template-columns: 1fr;
+            }
+
+            .register-form-group.full-width,
+            .register-terms,
+            .register-submit-btn,
+            .register-divider,
+            .google-register-btn,
+            .register-message,
+            .login-prompt {
+                grid-column: 1;
+            }
+
+            .register-heading h2 {
+                font-size: 27px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+
+        <div class="animated-words">
+
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>ELEGANCE</span>
+                <span>CONFIDENCE</span>
+                <span>STYLE</span>
+            </div>
+
+            <div class="word-track">
+                <span>PREMIUM FASHION</span>
+                <span>YOUR STYLE</span>
+                <span>YOUR CONFIDENCE</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="register-page">
+
+
+        <!-- HEADER -->
+
+        <header class="site-header">
+
+            <div class="header-container">
+
+                <a href="index.html" class="logo">
+                    KAS <span>LUXURY</span>
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navMenu">
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+                <nav>
+
+                    <ul class="nav-menu" id="navMenu">
+
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="men.html">Men</a></li>
+                        <li><a href="women.html">Women</a></li>
+                        <li><a href="shoes.html">Shoes</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+
+                    </ul>
+
+                </nav>
+
+                <div class="header-actions">
+
+                    <a href="wishlist.html" aria-label="Wishlist">
+                        <i class="far fa-heart"></i>
+                        <span id="wishlistCount">0</span>
+                    </a>
+
+                    <a href="cart.html" aria-label="Shopping cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cartCount">0</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- REGISTRATION SECTION -->
+
+        <main class="register-container">
+
+            <section class="register-card">
+
+
+                <!-- BRAND -->
+
+                <div class="register-brand">
+
+                    <div class="register-brand-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+
+                    <h1>
+                        KAS <span>LUXURY</span> BOUTIQUE
+                    </h1>
+
+                    <p>ELEGANCE • CONFIDENCE • STYLE</p>
+
+                </div>
+
+
+                <!-- HEADING -->
+
+                <div class="register-heading">
+
+                    <h2>Create Your Account</h2>
+
+                    <p>
+                        Join KAS LUXURY BOUTIQUE and enjoy
+                        a more personalised shopping experience.
+                    </p>
+
+                </div>
+
+
+                <!-- REGISTRATION FORM -->
+
+                <form class="register-form" id="registerForm">
+
+
+                    <!-- FULL NAME -->
+
+                    <div class="register-form-group full-width">
+
+                        <label for="registerName">
+                            Full Name *
+                        </label>
+
+                        <div class="register-input-wrapper">
+
+                            <i class="fas fa-user"></i>
+
+                            <input
+                                type="text"
+                                id="registerName"
+                                name="name"
+                                placeholder="Enter your full name"
+                                minlength="2"
+                                maxlength="80"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- EMAIL -->
+
+                    <div class="register-form-group">
+
+                        <label for="registerEmail">
+                            Email Address *
+                        </label>
+
+                        <div class="register-input-wrapper">
+
+                            <i class="fas fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="registerEmail"
+                                name="email"
+                                placeholder="Enter your email"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PHONE -->
+
+                    <div class="register-form-group">
+
+                        <label for="registerPhone">
+                            Phone Number *
+                        </label>
+
+                        <div class="register-input-wrapper">
+
+                            <i class="fas fa-phone"></i>
+
+                            <input
+                                type="tel"
+                                id="registerPhone"
+                                name="phone"
+                                placeholder="+260..."
+                                maxlength="25"
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PASSWORD -->
+
+                    <div class="register-form-group">
+
+                        <label for="registerPassword">
+                            Password *
+                        </label>
+
+                        <div class="register-input-wrapper">
+
+                            <i class="fas fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="registerPassword"
+                                name="password"
+                                placeholder="Create a password"
+                                minlength="8"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="register-password-toggle"
+                                data-target="registerPassword"
+                                aria-label="Show password">
+
+                                <i class="fas fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                        <div class="password-strength" id="passwordStrength">
+
+                            <div class="strength-track">
+
+                                <div
+                                    class="strength-fill"
+                                    id="strengthFill">
+                                </div>
+
+                            </div>
+
+                            <span
+                                class="strength-label"
+                                id="strengthLabel">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- CONFIRM PASSWORD -->
+
+                    <div class="register-form-group">
+
+                        <label for="confirmPassword">
+                            Confirm Password *
+                        </label>
+
+                        <div class="register-input-wrapper">
+
+                            <i class="fas fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="confirmPassword"
+                                name="confirmPassword"
+                                placeholder="Confirm your password"
+                                minlength="8"
+                                autocomplete="new-password"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="register-password-toggle"
+                                data-target="confirmPassword"
+                                aria-label="Show password">
+
+                                <i class="fas fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- TERMS -->
+
+                    <label class="register-terms">
+
+                        <input
+                            type="checkbox"
+                            id="acceptTerms"
+                            required
+                        >
+
+                        <span>
+                            I agree to the
+                            <a href="terms.html">Terms and Conditions</a>
+                            and
+                            <a href="privacy.html">Privacy Policy</a>
+                            of KAS LUXURY BOUTIQUE.
+                        </span>
+
+                    </label>
+
+
+                    <!-- MESSAGE -->
+
+                    <div
+                        id="registerMessage"
+                        class="register-message"
+                        role="status"
+                        aria-live="polite">
+                    </div>
+
+
+                    <!-- REGISTER BUTTON -->
+
+                    <button
+                        type="submit"
+                        class="register-submit-btn"
+                        id="registerButton">
+
+                        <i class="fas fa-user-plus"></i>
+
+                        Create My Account
+
+                    </button>
+
+
+                    <!-- DIVIDER -->
+
+                    <div class="register-divider">
+                        OR
+                    </div>
+
+
+                    <!-- GOOGLE REGISTRATION -->
+
+                    <button
+                        type="button"
+                        class="google-register-btn"
+                        id="googleRegisterButton">
+
+                        <i class="fab fa-google"></i>
+
+                        Continue with Google
+
+                    </button>
+
+
+                    <!-- LOGIN LINK -->
+
+                    <div class="login-prompt">
+
+                        Already have an account?
+
+                        <a href="login.html">
+                            Sign In
+                        </a>
+
+                    </div>
+
+                </form>
+
+
+                <!-- SECURITY -->
+
+                <div class="register-security">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                    Your account security matters to us.
+
+                    <br>
+
+                    KAS LUXURY BOUTIQUE
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer class="contact-footer">
+
+            <div class="contact-footer-inner">
+
+                <div>
+
+                    <h2>
+                        KAS <span>LUXURY</span> BOUTIQUE
+                    </h2>
+
+                    <p>
+                        Elegance • Confidence • Style
+                    </p>
+
+                </div>
+
+
+                <div class="contact-footer-links">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop All</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-footer-bottom">
+
+                &copy; <span id="currentYear"></span>
+
+                KAS LUXURY BOUTIQUE.
+
+                All rights reserved.
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- WEBSITE JAVASCRIPT -->
+
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
+    <!-- REGISTRATION JAVASCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* =====================================
+               FOOTER YEAR
+            ===================================== */
+
+            const currentYear = document.getElementById("currentYear");
+
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+
+
+            /* =====================================
+               SHOW / HIDE PASSWORD
+            ===================================== */
+
+            document.querySelectorAll(".register-password-toggle")
+                .forEach(function (button) {
+
+                    button.addEventListener("click", function () {
+
+                        const targetId = button.dataset.target;
+
+                        const input = document.getElementById(targetId);
+
+                        const showPassword = input.type === "password";
+
+                        input.type = showPassword ? "text" : "password";
+
+                        button.innerHTML = showPassword
+                            ? '<i class="fas fa-eye-slash"></i>'
+                            : '<i class="fas fa-eye"></i>';
+
+                        button.setAttribute(
+                            "aria-label",
+                            showPassword ? "Hide password" : "Show password"
+                        );
+
+                    });
+
+                });
+
+
+            /* =====================================
+               PASSWORD STRENGTH
+            ===================================== */
+
+            const passwordInput =
+                document.getElementById("registerPassword");
+
+            const passwordStrength =
+                document.getElementById("passwordStrength");
+
+            const strengthFill =
+                document.getElementById("strengthFill");
+
+            const strengthLabel =
+                document.getElementById("strengthLabel");
+
+
+            passwordInput.addEventListener("input", function () {
+
+                const password = passwordInput.value;
+
+                passwordStrength.classList.toggle(
+                    "show",
+                    password.length > 0
+                );
+
+                let score = 0;
+
+                if (password.length >= 8) score++;
+
+                if (/[A-Z]/.test(password)) score++;
+
+                if (/[a-z]/.test(password)) score++;
+
+                if (/[0-9]/.test(password)) score++;
+
+                if (/[^A-Za-z0-9]/.test(password)) score++;
+
+
+                const levels = [
+                    {
+                        width: "0%",
+                        text: "",
+                        color: "#e74c3c"
+                    },
+                    {
+                        width: "20%",
+                        text: "Very weak",
+                        color: "#e74c3c"
+                    },
+                    {
+                        width: "40%",
+                        text: "Weak",
+                        color: "#e67e22"
+                    },
+                    {
+                        width: "60%",
+                        text: "Fair",
+                        color: "#f1c40f"
+                    },
+                    {
+                        width: "80%",
+                        text: "Strong",
+                        color: "#2ecc71"
+                    },
+                    {
+                        width: "100%",
+                        text: "Very strong",
+                        color: "#27ae60"
+                    }
+                ];
+
+
+                const level = levels[score];
+
+                strengthFill.style.width = level.width;
+
+                strengthFill.style.background = level.color;
+
+                strengthLabel.textContent = level.text;
+
+            });
+
+
+            /* =====================================
+               REGISTRATION FORM
+            ===================================== */
+
+            const registerForm =
+                document.getElementById("registerForm");
+
+            const registerMessage =
+                document.getElementById("registerMessage");
+
+
+            registerForm.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+
+                if (!registerForm.checkValidity()) {
+
+                    registerForm.reportValidity();
+
+                    return;
+
+                }
+
+
+                const name =
+                    document.getElementById("registerName").value.trim();
+
+                const email =
+                    document.getElementById("registerEmail").value.trim();
+
+                const phone =
+                    document.getElementById("registerPhone").value.trim();
+
+                const password =
+                    document.getElementById("registerPassword").value;
+
+                const confirmPassword =
+                    document.getElementById("confirmPassword").value;
+
+                const acceptTerms =
+                    document.getElementById("acceptTerms").checked;
+
+
+                if (password !== confirmPassword) {
+
+                    showRegisterMessage(
+                        "Your passwords do not match.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (!acceptTerms) {
+
+                    showRegisterMessage(
+                        "Please accept the Terms and Conditions.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (name.length < 2) {
+
+                    showRegisterMessage(
+                        "Please enter your full name.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                if (password.length < 8) {
+
+                    showRegisterMessage(
+                        "Your password must contain at least 8 characters.",
+                        "error"
+                    );
+
+                    return;
+
+                }
+
+
+                /*
+                   AUTHENTICATION WILL BE CONNECTED
+                   TO FIREBASE IN THE NEXT STEP.
+                */
+
+                showRegisterMessage(
+                    "Your form is valid. Account registration is not connected yet. We will connect it to secure authentication next.",
+                    "success"
+                );
+
+
+                console.log("Registration form validated:", {
+                    name: name,
+                    email: email,
+                    phone: phone
+                });
+
+            });
+
+
+            /* =====================================
+               MESSAGE HELPER
+            ===================================== */
+
+            function showRegisterMessage(message, type) {
+
+                registerMessage.className =
+                    "register-message " + type;
+
+                registerMessage.textContent = message;
+
+            }
+
+
+            /* =====================================
+               GOOGLE REGISTRATION PLACEHOLDER
+            ===================================== */
+
+            const googleRegisterButton =
+                document.getElementById("googleRegisterButton");
+
+            googleRegisterButton.addEventListener("click", function () {
+
+                showRegisterMessage(
+                    "Google registration is not configured yet. It requires Google authentication setup.",
+                    "error"
+                );
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

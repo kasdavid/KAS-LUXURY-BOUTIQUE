@@ -1,0 +1,1063 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="KAS LUXURY BOUTIQUE Administration Dashboard">
+
+    <title>Admin Dashboard | KAS LUXURY BOUTIQUE</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main Stylesheets -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        :root {
+            --admin-bg: #080808;
+            --admin-card: #111111;
+            --admin-card-light: #181818;
+            --admin-gold: #d4af37;
+            --admin-gold-light: #f5d76e;
+            --admin-white: #ffffff;
+            --admin-muted: #999999;
+            --admin-border: rgba(212,175,55,0.16);
+            --admin-green: #36c98f;
+            --admin-red: #ff6868;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background: var(--admin-bg);
+            color: var(--admin-white);
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+
+        button,
+        input,
+        select {
+            font: inherit;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .admin-layout {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        /* SIDEBAR */
+
+        .admin-sidebar {
+            width: 260px;
+            position: fixed;
+            inset: 0 auto 0 0;
+            z-index: 1000;
+            padding: 28px 18px;
+            background: #0d0d0d;
+            border-right: 1px solid var(--admin-border);
+            overflow-y: auto;
+            transition: transform 0.35s ease;
+        }
+
+        .admin-logo {
+            text-align: center;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--admin-border);
+        }
+
+        .admin-logo h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 23px;
+            color: var(--admin-gold);
+            letter-spacing: 2px;
+        }
+
+        .admin-logo span {
+            display: block;
+            margin-top: 7px;
+            font-size: 10px;
+            letter-spacing: 4px;
+            color: #aaa;
+        }
+
+        .sidebar-label {
+            margin: 30px 12px 12px;
+            color: #777;
+            font-size: 10px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .sidebar-menu {
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+        }
+
+        .sidebar-menu a {
+            display: flex;
+            align-items: center;
+            gap: 13px;
+            padding: 13px 14px;
+            border-radius: 8px;
+            color: #aaa;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .sidebar-menu a i {
+            width: 18px;
+            font-size: 15px;
+        }
+
+        .sidebar-menu a:hover,
+        .sidebar-menu a.active {
+            color: var(--admin-gold-light);
+            background: rgba(212,175,55,0.11);
+        }
+
+        .sidebar-menu a.active {
+            border-left: 3px solid var(--admin-gold);
+        }
+
+        .sidebar-bottom {
+            margin-top: 45px;
+            padding-top: 20px;
+            border-top: 1px solid var(--admin-border);
+        }
+
+        /* MAIN AREA */
+
+        .admin-main {
+            width: calc(100% - 260px);
+            margin-left: 260px;
+            padding: 25px 35px 50px;
+        }
+
+        /* TOPBAR */
+
+        .admin-topbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 20px;
+            padding-bottom: 25px;
+            border-bottom: 1px solid var(--admin-border);
+        }
+
+        .topbar-left {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .menu-toggle {
+            display: none;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--admin-border);
+            border-radius: 8px;
+            background: var(--admin-card);
+            color: var(--admin-gold);
+            cursor: pointer;
+        }
+
+        .topbar-title h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 27px;
+        }
+
+        .topbar-title p {
+            color: var(--admin-muted);
+            font-size: 12px;
+            margin-top: 6px;
+        }
+
+        .admin-profile {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .profile-icon {
+            width: 42px;
+            height: 42px;
+            display: grid;
+            place-items: center;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #d4af37, #8c6b18);
+            color: #080808;
+        }
+
+        .profile-details strong {
+            display: block;
+            font-size: 12px;
+        }
+
+        .profile-details span {
+            color: var(--admin-muted);
+            font-size: 10px;
+        }
+
+        /* WELCOME */
+
+        .welcome-section {
+            margin: 30px 0;
+            padding: 30px;
+            border: 1px solid var(--admin-border);
+            border-radius: 14px;
+            background:
+                radial-gradient(circle at 85% 20%, rgba(212,175,55,0.13), transparent 35%),
+                linear-gradient(120deg, #17130a, #111111);
+        }
+
+        .welcome-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 29px;
+            color: var(--admin-gold-light);
+            margin-bottom: 10px;
+        }
+
+        .welcome-section p {
+            color: #aaa;
+            font-size: 13px;
+            line-height: 1.8;
+        }
+
+        /* STATISTICS */
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 18px;
+            margin-bottom: 35px;
+        }
+
+        .stat-card {
+            padding: 23px;
+            background: var(--admin-card);
+            border: 1px solid var(--admin-border);
+            border-radius: 12px;
+            transition: 0.35s;
+        }
+
+        .stat-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--admin-gold);
+            box-shadow: 0 10px 30px rgba(212,175,55,0.08);
+        }
+
+        .stat-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .stat-icon {
+            width: 43px;
+            height: 43px;
+            display: grid;
+            place-items: center;
+            border-radius: 10px;
+            background: rgba(212,175,55,0.12);
+            color: var(--admin-gold);
+            font-size: 17px;
+        }
+
+        .stat-card h3 {
+            font-size: 26px;
+            margin-bottom: 7px;
+        }
+
+        .stat-card p {
+            color: var(--admin-muted);
+            font-size: 11px;
+        }
+
+        .stat-note {
+            font-size: 10px;
+            color: var(--admin-green);
+        }
+
+        /* SECTION HEADINGS */
+
+        .section-heading {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 18px;
+        }
+
+        .section-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 21px;
+        }
+
+        .section-heading a {
+            color: var(--admin-gold);
+            font-size: 12px;
+        }
+
+        /* QUICK ACTIONS */
+
+        .quick-actions {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            margin-bottom: 35px;
+        }
+
+        .quick-action {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px;
+            border-radius: 10px;
+            border: 1px solid var(--admin-border);
+            background: var(--admin-card);
+            color: var(--admin-white);
+            cursor: pointer;
+            text-align: left;
+            transition: 0.3s;
+        }
+
+        .quick-action:hover {
+            border-color: var(--admin-gold);
+            transform: translateY(-4px);
+        }
+
+        .quick-action i {
+            color: var(--admin-gold);
+            font-size: 19px;
+        }
+
+        .quick-action span {
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        /* ORDERS TABLE */
+
+        .table-container {
+            width: 100%;
+            overflow-x: auto;
+            border: 1px solid var(--admin-border);
+            border-radius: 12px;
+            background: var(--admin-card);
+            margin-bottom: 35px;
+        }
+
+        .orders-table {
+            width: 100%;
+            min-width: 650px;
+            border-collapse: collapse;
+        }
+
+        .orders-table th,
+        .orders-table td {
+            padding: 17px;
+            text-align: left;
+            border-bottom: 1px solid var(--admin-border);
+            font-size: 11px;
+        }
+
+        .orders-table th {
+            color: var(--admin-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 10px;
+        }
+
+        .orders-table td {
+            color: #ccc;
+        }
+
+        .status {
+            display: inline-block;
+            padding: 6px 10px;
+            border-radius: 30px;
+            font-size: 10px;
+            background: rgba(212,175,55,0.12);
+            color: var(--admin-gold-light);
+        }
+
+        .empty-table {
+            text-align: center !important;
+            padding: 35px !important;
+            color: #999 !important;
+        }
+
+        /* LOWER GRID */
+
+        .lower-grid {
+            display: grid;
+            grid-template-columns: 1.3fr 1fr;
+            gap: 20px;
+        }
+
+        .panel {
+            padding: 22px;
+            background: var(--admin-card);
+            border: 1px solid var(--admin-border);
+            border-radius: 12px;
+        }
+
+        .panel-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 15px 0;
+            border-bottom: 1px solid var(--admin-border);
+            font-size: 12px;
+        }
+
+        .panel-item:last-child {
+            border-bottom: none;
+        }
+
+        .panel-item span {
+            color: #aaa;
+        }
+
+        .panel-item strong {
+            color: var(--admin-gold-light);
+        }
+
+        .admin-footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--admin-border);
+            color: #777;
+            text-align: center;
+            font-size: 11px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1100px) {
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-actions {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .admin-sidebar {
+                transform: translateX(-100%);
+            }
+
+            .admin-sidebar.open {
+                transform: translateX(0);
+            }
+
+            .admin-main {
+                width: 100%;
+                margin-left: 0;
+                padding: 18px;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            .topbar-title h1 {
+                font-size: 21px;
+            }
+
+            .topbar-title p {
+                font-size: 10px;
+            }
+
+            .profile-details {
+                display: none;
+            }
+
+            .welcome-section {
+                padding: 23px;
+            }
+
+            .welcome-section h2 {
+                font-size: 23px;
+            }
+
+            .lower-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-card h3 {
+                font-size: 21px;
+            }
+
+            .quick-actions {
+                grid-template-columns: 1fr 1fr;
+                gap: 10px;
+            }
+
+            .quick-action {
+                padding: 13px;
+            }
+
+            .quick-action span {
+                font-size: 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="admin-layout">
+
+    <!-- SIDEBAR -->
+    <aside class="admin-sidebar" id="adminSidebar">
+
+        <div class="admin-logo">
+            <h2>KAS LUXURY</h2>
+            <span>BOUTIQUE ADMIN</span>
+        </div>
+
+        <p class="sidebar-label">Main Menu</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="#dashboard" class="active">
+                <i class="fas fa-chart-pie"></i>
+                Dashboard
+            </a>
+
+            <a href="shop.html">
+                <i class="fas fa-box"></i>
+                Products
+            </a>
+
+            <a href="#orders">
+                <i class="fas fa-shopping-bag"></i>
+                Orders
+            </a>
+
+            <a href="#customers">
+                <i class="fas fa-users"></i>
+                Customers
+            </a>
+
+            <a href="wishlist.html">
+                <i class="fas fa-heart"></i>
+                Wishlist
+            </a>
+
+        </nav>
+
+        <p class="sidebar-label">Store Management</p>
+
+        <nav class="sidebar-menu">
+
+            <a href="shop.html">
+                <i class="fas fa-store"></i>
+                View Store
+            </a>
+
+            <a href="contact.html">
+                <i class="fas fa-envelope"></i>
+                Enquiries
+            </a>
+
+            <a href="about.html">
+                <i class="fas fa-info-circle"></i>
+                About Store
+            </a>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <nav class="sidebar-menu">
+
+                <a href="index.html">
+                    <i class="fas fa-home"></i>
+                    Back to Website
+                </a>
+
+                <a href="login.html">
+                    <i class="fas fa-sign-out-alt"></i>
+                    Login Page
+                </a>
+
+            </nav>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN CONTENT -->
+    <main class="admin-main" id="dashboard">
+
+        <!-- TOPBAR -->
+        <header class="admin-topbar">
+
+            <div class="topbar-left">
+
+                <button class="menu-toggle" id="adminMenuToggle"
+                        aria-label="Open admin menu"
+                        aria-expanded="false">
+                    <i class="fas fa-bars"></i>
+                </button>
+
+                <div class="topbar-title">
+                    <h1>Admin Dashboard</h1>
+                    <p>Manage your luxury boutique</p>
+                </div>
+
+            </div>
+
+            <div class="admin-profile">
+
+                <div class="profile-icon">
+                    <i class="fas fa-user-shield"></i>
+                </div>
+
+                <div class="profile-details">
+                    <strong>Store Administrator</strong>
+                    <span>Dashboard preview</span>
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- WELCOME -->
+        <section class="welcome-section">
+
+            <h2>Welcome to KAS LUXURY BOUTIQUE</h2>
+
+            <p>
+                Manage your boutique, monitor customer orders,
+                review products and keep your fashion store organised.
+            </p>
+
+        </section>
+
+
+        <!-- STATISTICS -->
+        <section class="stats-grid">
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <div class="stat-icon">
+                        <i class="fas fa-box-open"></i>
+                    </div>
+                    <span class="stat-note">Store data</span>
+                </div>
+
+                <h3 id="totalProducts">0</h3>
+                <p>Total Products</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <div class="stat-icon">
+                        <i class="fas fa-shopping-bag"></i>
+                    </div>
+                    <span class="stat-note">Local records</span>
+                </div>
+
+                <h3 id="totalOrders">0</h3>
+                <p>Total Orders</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <div class="stat-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <span class="stat-note">Order records</span>
+                </div>
+
+                <h3 id="totalCustomers">0</h3>
+                <p>Customers with Orders</p>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-top">
+                    <div class="stat-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <span class="stat-note">Demo calculation</span>
+                </div>
+
+                <h3 id="totalRevenue">K0</h3>
+                <p>Recorded Order Value</p>
+
+            </div>
+
+        </section>
+
+
+        <!-- QUICK ACTIONS -->
+        <section>
+
+            <div class="section-heading">
+                <h2>Quick Actions</h2>
+            </div>
+
+            <div class="quick-actions">
+
+                <a href="shop.html" class="quick-action">
+                    <i class="fas fa-plus-circle"></i>
+                    <span>Manage Products</span>
+                </a>
+
+                <a href="#orders" class="quick-action">
+                    <i class="fas fa-clipboard-list"></i>
+                    <span>View Orders</span>
+                </a>
+
+                <a href="#customers" class="quick-action">
+                    <i class="fas fa-user-friends"></i>
+                    <span>Customers</span>
+                </a>
+
+                <a href="index.html" class="quick-action">
+                    <i class="fas fa-globe"></i>
+                    <span>Visit Website</span>
+                </a>
+
+            </div>
+
+        </section>
+
+
+        <!-- RECENT ORDERS -->
+        <section id="orders">
+
+            <div class="section-heading">
+                <h2>Recent Orders</h2>
+                <a href="checkout.html">Checkout Page</a>
+            </div>
+
+            <div class="table-container">
+
+                <table class="orders-table">
+
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="ordersTableBody">
+
+                        <tr>
+                            <td colspan="5" class="empty-table">
+                                No local orders found yet.
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+        <!-- LOWER PANELS -->
+        <section class="lower-grid">
+
+            <div class="panel">
+
+                <div class="section-heading">
+                    <h2>Store Overview</h2>
+                </div>
+
+                <div class="panel-item">
+                    <span>Men's Collection</span>
+                    <strong>View Products</strong>
+                </div>
+
+                <div class="panel-item">
+                    <span>Women's Collection</span>
+                    <strong>View Products</strong>
+                </div>
+
+                <div class="panel-item">
+                    <span>Shoes Collection</span>
+                    <strong>View Products</strong>
+                </div>
+
+                <div class="panel-item">
+                    <span>Accessories</span>
+                    <strong>View Products</strong>
+                </div>
+
+            </div>
+
+
+            <div class="panel" id="customers">
+
+                <div class="section-heading">
+                    <h2>Customer Overview</h2>
+                </div>
+
+                <div class="panel-item">
+                    <span>Customers with orders</span>
+                    <strong id="customerCount">0</strong>
+                </div>
+
+                <div class="panel-item">
+                    <span>Pending order requests</span>
+                    <strong id="pendingOrders">0</strong>
+                </div>
+
+                <div class="panel-item">
+                    <span>Store currency</span>
+                    <strong>ZMW (K)</strong>
+                </div>
+
+                <div class="panel-item">
+                    <span>Dashboard mode</span>
+                    <strong>Preview</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- FOOTER -->
+        <footer class="admin-footer">
+
+            <p>
+                &copy; <span id="adminYear"></span>
+                KAS LUXURY BOUTIQUE.
+                All Rights Reserved.
+            </p>
+
+            <p style="margin-top:8px;">
+                Elegance • Confidence • Style
+            </p>
+
+        </footer>
+
+    </main>
+
+</div>
+
+
+<!-- PRODUCTS DATA -->
+<script src="js/products.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    /* MOBILE SIDEBAR */
+
+    const menuToggle = document.getElementById("adminMenuToggle");
+    const sidebar = document.getElementById("adminSidebar");
+
+    menuToggle.addEventListener("click", function () {
+
+        const isOpen = sidebar.classList.toggle("open");
+
+        menuToggle.setAttribute("aria-expanded", isOpen);
+
+        menuToggle.innerHTML = isOpen
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+
+    });
+
+
+    /* CURRENT YEAR */
+
+    document.getElementById("adminYear").textContent =
+        new Date().getFullYear();
+
+
+    /* LOAD PRODUCTS */
+
+    const products = Array.isArray(window.boutiqueProducts)
+        ? window.boutiqueProducts
+        : [];
+
+    document.getElementById("totalProducts").textContent =
+        products.length;
+
+
+    /* LOAD LOCAL ORDERS */
+
+    let orders = [];
+
+    try {
+        orders = JSON.parse(
+            localStorage.getItem("kasBoutiqueOrders") || "[]"
+        );
+
+        if (!Array.isArray(orders)) {
+            orders = [];
+        }
+
+    } catch (error) {
+        console.error("Could not load local orders:", error);
+        orders = [];
+    }
+
+
+    /* CALCULATE STATISTICS */
+
+    const customerEmails = new Set();
+
+    let revenue = 0;
+    let pending = 0;
+
+    orders.forEach(order => {
+
+        if (order.email) {
+            customerEmails.add(order.email.toLowerCase());
+        }
+
+        revenue += Number(order.subtotal) || 0;
+
+        if (
+            String(order.status || "").toLowerCase().includes("pending")
+        ) {
+            pending++;
+        }
+
+    });
+
+
+    document.getElementById("totalOrders").textContent =
+        orders.length;
+
+    document.getElementById("totalCustomers").textContent =
+        customerEmails.size;
+
+    document.getElementById("customerCount").textContent =
+        customerEmails.size;
+
+    document.getElementById("pendingOrders").textContent =
+        pending;
+
+    document.getElementById("totalRevenue").textContent =
+        "K" + revenue.toLocaleString("en-ZM");
+
+
+    /* DISPLAY RECENT ORDERS */
+
+    const tableBody = document.getElementById("ordersTableBody");
+
+    if (orders.length > 0) {
+
+        tableBody.innerHTML = "";
+
+        orders.slice().reverse().slice(0, 8).forEach(order => {
+
+            const row = document.createElement("tr");
+
+            const orderId = String(order.reference || "N/A");
+            const customer = String(order.fullName || "Customer");
+            const amount = Number(order.subtotal) || 0;
+            const status = String(order.status || "Pending");
+            const date = order.createdAt
+                ? new Date(order.createdAt).toLocaleDateString()
+                : "N/A";
+
+            const values = [
+                orderId,
+                customer,
+                "K" + amount.toLocaleString("en-ZM"),
+                status,
+                date
+            ];
+
+            values.forEach((value, index) => {
+
+                const cell = document.createElement("td");
+
+                if (index === 3) {
+
+                    const badge = document.createElement("span");
+                    badge.className = "status";
+                    badge.textContent = value;
+                    cell.appendChild(badge);
+
+                } else {
+
+                    cell.textContent = value;
+
+                }
+
+                row.appendChild(cell);
+
+            });
+
+            tableBody.appendChild(row);
+
+        });
+
+    }
+
+});
+</script>
+
+</body>
+</html>
+

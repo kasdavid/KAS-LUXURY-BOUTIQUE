@@ -1,0 +1,829 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Sign in to your KAS LUXURY BOUTIQUE account.">
+
+    <meta name="theme-color" content="#080808">
+
+    <title>Login | KAS LUXURY BOUTIQUE</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- WEBSITE CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+
+        /* =====================================
+           LOGIN PAGE
+        ===================================== */
+
+        :root {
+            --login-gold: #d4af37;
+            --login-gold-light: #f5d879;
+            --login-black: #080808;
+            --login-card: #151515;
+            --login-white: #ffffff;
+            --login-grey: #aaaaaa;
+        }
+
+        body {
+            background: var(--login-black);
+            color: var(--login-white);
+            min-height: 100vh;
+        }
+
+        .login-page {
+            position: relative;
+            z-index: 1;
+        }
+
+        .login-container {
+            min-height: 80vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 70px 20px;
+        }
+
+        /* =====================================
+           LOGIN CARD
+        ===================================== */
+
+        .login-card {
+            width: 100%;
+            max-width: 470px;
+            padding: 45px 40px;
+            background: linear-gradient(145deg, #191919, #0d0d0d);
+            border: 1px solid #383838;
+            box-shadow: 0 20px 70px rgba(0, 0, 0, 0.5);
+        }
+
+        .login-brand {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-brand-icon {
+            width: 65px;
+            height: 65px;
+            border: 1px solid var(--login-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+            color: var(--login-gold);
+            font-size: 25px;
+        }
+
+        .login-brand h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 25px;
+            letter-spacing: 1px;
+        }
+
+        .login-brand h1 span {
+            color: var(--login-gold);
+        }
+
+        .login-brand p {
+            color: var(--login-grey);
+            font-size: 12px;
+            letter-spacing: 2px;
+            margin-top: 9px;
+        }
+
+        .login-heading {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .login-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 10px;
+        }
+
+        .login-heading p {
+            color: var(--login-grey);
+            font-size: 13px;
+            line-height: 1.7;
+        }
+
+        /* =====================================
+           FORM
+        ===================================== */
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .login-form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 9px;
+        }
+
+        .login-form-group label {
+            font-size: 13px;
+            font-weight: 700;
+        }
+
+        .login-input-wrapper {
+            position: relative;
+        }
+
+        .login-input-wrapper > i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--login-gold);
+            font-size: 15px;
+        }
+
+        .login-input-wrapper input {
+            width: 100%;
+            padding: 15px 45px;
+            background: #090909;
+            color: white;
+            border: 1px solid #3c3c3c;
+            border-radius: 3px;
+            outline: none;
+            font-family: inherit;
+            font-size: 13px;
+            transition: 0.3s;
+        }
+
+        .login-input-wrapper input:focus {
+            border-color: var(--login-gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.08);
+        }
+
+        .login-input-wrapper input::placeholder {
+            color: #777;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 14px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: none;
+            border: none;
+            color: #999;
+            cursor: pointer;
+            font-size: 15px;
+        }
+
+        .password-toggle:hover {
+            color: var(--login-gold);
+        }
+
+        /* =====================================
+           REMEMBER AND FORGOT
+        ===================================== */
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 12px;
+            color: #bbb;
+        }
+
+        .remember-me input {
+            accent-color: var(--login-gold);
+        }
+
+        .forgot-password {
+            color: var(--login-gold);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        /* =====================================
+           BUTTON
+        ===================================== */
+
+        .login-submit-btn {
+            width: 100%;
+            padding: 16px;
+            border: none;
+            background: var(--login-gold);
+            color: #080808;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 13px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .login-submit-btn:hover {
+            background: var(--login-gold-light);
+            transform: translateY(-2px);
+        }
+
+        .login-submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* =====================================
+           DIVIDER
+        ===================================== */
+
+        .login-divider {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            color: #777;
+            font-size: 12px;
+            margin: 25px 0;
+        }
+
+        .login-divider::before,
+        .login-divider::after {
+            content: "";
+            flex: 1;
+            height: 1px;
+            background: #333;
+        }
+
+        /* =====================================
+           GOOGLE BUTTON
+        ===================================== */
+
+        .google-login-btn {
+            width: 100%;
+            padding: 14px;
+            background: transparent;
+            border: 1px solid #444;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            transition: 0.3s;
+        }
+
+        .google-login-btn:hover {
+            border-color: var(--login-gold);
+            background: #1b1b1b;
+        }
+
+        .google-login-btn i {
+            color: #4285F4;
+            font-size: 17px;
+        }
+
+        /* =====================================
+           REGISTER
+        ===================================== */
+
+        .register-prompt {
+            text-align: center;
+            margin-top: 28px;
+            color: var(--login-grey);
+            font-size: 13px;
+        }
+
+        .register-prompt a {
+            color: var(--login-gold);
+            font-weight: 700;
+            text-decoration: none;
+        }
+
+        .register-prompt a:hover {
+            text-decoration: underline;
+        }
+
+        /* =====================================
+           LOGIN MESSAGE
+        ===================================== */
+
+        .login-message {
+            display: none;
+            padding: 13px;
+            font-size: 12px;
+            line-height: 1.7;
+            border-radius: 3px;
+        }
+
+        .login-message.error {
+            display: block;
+            background: rgba(220, 53, 69, 0.12);
+            color: #ff8b95;
+            border: 1px solid #a83240;
+        }
+
+        .login-message.success {
+            display: block;
+            background: rgba(40, 167, 69, 0.12);
+            color: #7de59b;
+            border: 1px solid #287c42;
+        }
+
+        /* =====================================
+           SECURITY NOTICE
+        ===================================== */
+
+        .login-security {
+            text-align: center;
+            margin-top: 28px;
+            padding-top: 20px;
+            border-top: 1px solid #333;
+            color: #777;
+            font-size: 11px;
+            line-height: 1.8;
+        }
+
+        .login-security i {
+            color: var(--login-gold);
+            margin-right: 5px;
+        }
+
+        /* =====================================
+           RESPONSIVE
+        ===================================== */
+
+        @media (max-width: 500px) {
+
+            .login-container {
+                padding: 40px 15px;
+            }
+
+            .login-card {
+                padding: 35px 22px;
+            }
+
+            .login-heading h2 {
+                font-size: 27px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+
+        <div class="animated-words">
+
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>ELEGANCE</span>
+                <span>CONFIDENCE</span>
+                <span>STYLE</span>
+            </div>
+
+            <div class="word-track">
+                <span>PREMIUM FASHION</span>
+                <span>YOUR STYLE</span>
+                <span>YOUR CONFIDENCE</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div class="login-page">
+
+
+        <!-- HEADER -->
+
+        <header class="site-header">
+
+            <div class="header-container">
+
+                <a href="index.html" class="logo">
+                    KAS <span>LUXURY</span>
+                </a>
+
+                <button
+                    class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false"
+                    aria-controls="navMenu">
+
+                    <i class="fas fa-bars"></i>
+
+                </button>
+
+                <nav>
+
+                    <ul class="nav-menu" id="navMenu">
+
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="shop.html">Shop All</a></li>
+                        <li><a href="men.html">Men</a></li>
+                        <li><a href="women.html">Women</a></li>
+                        <li><a href="shoes.html">Shoes</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+
+                    </ul>
+
+                </nav>
+
+                <div class="header-actions">
+
+                    <a href="wishlist.html" aria-label="Wishlist">
+                        <i class="far fa-heart"></i>
+                        <span id="wishlistCount">0</span>
+                    </a>
+
+                    <a href="cart.html" aria-label="Shopping cart">
+                        <i class="fas fa-shopping-bag"></i>
+                        <span id="cartCount">0</span>
+                    </a>
+
+                </div>
+
+            </div>
+
+        </header>
+
+
+        <!-- LOGIN SECTION -->
+
+        <main class="login-container">
+
+            <section class="login-card">
+
+                <div class="login-brand">
+
+                    <div class="login-brand-icon">
+                        <i class="fas fa-crown"></i>
+                    </div>
+
+                    <h1>
+                        KAS <span>LUXURY</span> BOUTIQUE
+                    </h1>
+
+                    <p>ELEGANCE • CONFIDENCE • STYLE</p>
+
+                </div>
+
+
+                <div class="login-heading">
+
+                    <h2>Welcome Back</h2>
+
+                    <p>
+                        Sign in to access your account and
+                        enjoy your shopping experience.
+                    </p>
+
+                </div>
+
+
+                <!-- LOGIN FORM -->
+
+                <form class="login-form" id="loginForm">
+
+                    <div class="login-form-group">
+
+                        <label for="loginEmail">
+                            Email Address
+                        </label>
+
+                        <div class="login-input-wrapper">
+
+                            <i class="fas fa-envelope"></i>
+
+                            <input
+                                type="email"
+                                id="loginEmail"
+                                name="email"
+                                placeholder="Enter your email address"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="login-form-group">
+
+                        <label for="loginPassword">
+                            Password
+                        </label>
+
+                        <div class="login-input-wrapper">
+
+                            <i class="fas fa-lock"></i>
+
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                placeholder="Enter your password"
+                                autocomplete="current-password"
+                                minlength="6"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="password-toggle"
+                                id="passwordToggle"
+                                aria-label="Show password">
+
+                                <i class="fas fa-eye"></i>
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="login-options">
+
+                        <label class="remember-me">
+
+                            <input
+                                type="checkbox"
+                                id="rememberMe"
+                            >
+
+                            Remember me
+
+                        </label>
+
+                        <a
+                            href="forgot-password.html"
+                            class="forgot-password">
+
+                            Forgot password?
+
+                        </a>
+
+                    </div>
+
+
+                    <div
+                        id="loginMessage"
+                        class="login-message"
+                        role="status"
+                        aria-live="polite">
+                    </div>
+
+
+                    <button
+                        type="submit"
+                        class="login-submit-btn"
+                        id="loginButton">
+
+                        <i class="fas fa-sign-in-alt"></i>
+
+                        Sign In
+
+                    </button>
+
+                </form>
+
+
+                <div class="login-divider">
+                    OR
+                </div>
+
+
+                <!-- GOOGLE LOGIN PLACEHOLDER -->
+
+                <button
+                    type="button"
+                    class="google-login-btn"
+                    id="googleLoginButton">
+
+                    <i class="fab fa-google"></i>
+
+                    Continue with Google
+
+                </button>
+
+
+                <div class="register-prompt">
+
+                    Don't have an account?
+
+                    <a href="register.html">
+                        Create Account
+                    </a>
+
+                </div>
+
+
+                <div class="login-security">
+
+                    <i class="fas fa-shield-alt"></i>
+
+                    Your account security matters to us.
+
+                    <br>
+
+                    KAS LUXURY BOUTIQUE
+
+                </div>
+
+            </section>
+
+        </main>
+
+
+        <!-- FOOTER -->
+
+        <footer class="contact-footer">
+
+            <div class="contact-footer-inner">
+
+                <div>
+
+                    <h2>
+                        KAS <span>LUXURY</span> BOUTIQUE
+                    </h2>
+
+                    <p>
+                        Elegance • Confidence • Style
+                    </p>
+
+                </div>
+
+
+                <div class="contact-footer-links">
+
+                    <h3>Quick Links</h3>
+
+                    <a href="index.html">Home</a>
+                    <a href="shop.html">Shop All</a>
+                    <a href="about.html">About Us</a>
+                    <a href="contact.html">Contact Us</a>
+
+                </div>
+
+            </div>
+
+
+            <div class="contact-footer-bottom">
+
+                &copy; <span id="currentYear"></span>
+
+                KAS LUXURY BOUTIQUE.
+
+                All rights reserved.
+
+            </div>
+
+        </footer>
+
+    </div>
+
+
+    <!-- WEBSITE JAVASCRIPT -->
+
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
+    <!-- LOGIN PAGE JAVASCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            /* FOOTER YEAR */
+
+            const currentYear = document.getElementById("currentYear");
+
+            if (currentYear) {
+                currentYear.textContent = new Date().getFullYear();
+            }
+
+
+            /* SHOW / HIDE PASSWORD */
+
+            const passwordInput =
+                document.getElementById("loginPassword");
+
+            const passwordToggle =
+                document.getElementById("passwordToggle");
+
+            passwordToggle.addEventListener("click", function () {
+
+                const isPassword =
+                    passwordInput.type === "password";
+
+                passwordInput.type =
+                    isPassword ? "text" : "password";
+
+                passwordToggle.innerHTML = isPassword
+                    ? '<i class="fas fa-eye-slash"></i>'
+                    : '<i class="fas fa-eye"></i>';
+
+                passwordToggle.setAttribute(
+                    "aria-label",
+                    isPassword ? "Hide password" : "Show password"
+                );
+
+            });
+
+
+            /* LOGIN FORM */
+
+            const loginForm =
+                document.getElementById("loginForm");
+
+            const loginMessage =
+                document.getElementById("loginMessage");
+
+            const loginButton =
+                document.getElementById("loginButton");
+
+
+            loginForm.addEventListener("submit", function (event) {
+
+                event.preventDefault();
+
+                if (!loginForm.checkValidity()) {
+
+                    loginForm.reportValidity();
+
+                    return;
+
+                }
+
+                loginMessage.className = "login-message error";
+
+                loginMessage.textContent =
+                    "Login is not connected yet. We will connect this form to secure account authentication next.";
+
+            });
+
+
+            /* GOOGLE LOGIN PLACEHOLDER */
+
+            const googleLoginButton =
+                document.getElementById("googleLoginButton");
+
+            googleLoginButton.addEventListener("click", function () {
+
+                loginMessage.className = "login-message error";
+
+                loginMessage.textContent =
+                    "Google sign-in is not configured yet. It requires Google authentication setup.";
+
+            });
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

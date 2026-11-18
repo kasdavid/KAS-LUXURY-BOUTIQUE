@@ -1,0 +1,502 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Wishlist | KAS LUXURY BOUTIQUE</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/animations.css">
+    <link rel="stylesheet" href="css/responsive.css">
+
+    <style>
+        .wishlist-page {
+            min-height: 75vh;
+            padding: 55px 5% 80px;
+        }
+
+        .wishlist-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .wishlist-heading h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--gold);
+            font-size: clamp(32px, 5vw, 48px);
+            margin-bottom: 12px;
+        }
+
+        .wishlist-heading p {
+            color: var(--grey);
+            line-height: 1.7;
+        }
+
+        .wishlist-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .wishlist-card {
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .wishlist-image {
+            position: relative;
+        }
+
+        .wishlist-image img {
+            display: block;
+            width: 100%;
+            height: 270px;
+            object-fit: cover;
+        }
+
+        .remove-wishlist {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            width: 38px;
+            height: 38px;
+            border: none;
+            border-radius: 50%;
+            background: var(--gold);
+            color: var(--black);
+            cursor: pointer;
+        }
+
+        .wishlist-info {
+            padding: 18px;
+        }
+
+        .wishlist-info .category {
+            color: var(--gold);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .wishlist-info h3 {
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .wishlist-price {
+            color: var(--gold);
+            font-weight: 800;
+            font-size: 19px;
+            margin-bottom: 15px;
+        }
+
+        .wishlist-add-cart {
+            width: 100%;
+            padding: 13px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .wishlist-add-cart:hover {
+            opacity: 0.85;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            padding: 70px 20px;
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            grid-column: 1 / -1;
+        }
+
+        .wishlist-empty i {
+            font-size: 55px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .wishlist-empty h2 {
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .wishlist-empty p {
+            color: var(--grey);
+            margin-bottom: 25px;
+        }
+
+        .shop-now-btn {
+            display: inline-block;
+            padding: 13px 25px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        @media (max-width: 1100px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .wishlist-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+
+            .wishlist-image img {
+                height: 210px;
+            }
+
+            .wishlist-page {
+                padding: 35px 4% 60px;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .wishlist-grid {
+                gap: 10px;
+            }
+
+            .wishlist-image img {
+                height: 170px;
+            }
+
+            .wishlist-info {
+                padding: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement-bar">
+        <p>WELCOME TO KAS LUXURY BOUTIQUE | ELEGANCE • CONFIDENCE • STYLE</p>
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                <span>KAS</span> LUXURY BOUTIQUE
+            </a>
+
+            <div class="header-actions">
+
+                <a href="index.html" aria-label="Home">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <a href="cart.html" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </a>
+
+            </div>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="navigation">
+
+            <ul class="nav-menu" id="navMenu">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- WISHLIST -->
+
+    <main class="wishlist-page">
+
+        <section class="wishlist-heading">
+
+            <h1>My Wishlist</h1>
+
+            <p>
+                Your favourite styles, all in one place.
+                Save the pieces you love.
+            </p>
+
+        </section>
+
+
+        <section class="wishlist-grid" id="wishlistProducts">
+
+            <!-- JavaScript loads wishlist products here -->
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                KAS LUXURY BOUTIQUE. All Rights Reserved.
+            </p>
+
+            <p>Elegance • Confidence • Style</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/products.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const wishlistContainer =
+                document.getElementById("wishlistProducts");
+
+            const products = window.boutiqueProducts || [];
+
+            function getWishlist() {
+
+                try {
+                    return JSON.parse(
+                        localStorage.getItem("kasBoutiqueWishlist")
+                    ) || [];
+                } catch (error) {
+                    return [];
+                }
+
+            }
+
+
+            function renderWishlist() {
+
+                const wishlistIds = getWishlist().map(String);
+
+                const savedProducts = products.filter(product =>
+                    wishlistIds.includes(String(product.id))
+                );
+
+                if (savedProducts.length === 0) {
+
+                    wishlistContainer.innerHTML = `
+
+                        <div class="wishlist-empty">
+
+                            <i class="far fa-heart"></i>
+
+                            <h2>Your Wishlist Is Empty</h2>
+
+                            <p>
+                                You haven't saved any favourite products yet.
+                                Explore our collection and find something you love.
+                            </p>
+
+                            <a href="shop.html" class="shop-now-btn">
+                                Explore Our Shop
+                            </a>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+
+                wishlistContainer.innerHTML = savedProducts.map(product => {
+
+                    const productId = String(product.id);
+
+                    const image = product.image ||
+                        "https://placehold.co/600x700/111111/D4AF37?text=KAS+LUXURY";
+
+                    return `
+
+                        <article class="wishlist-card">
+
+                            <div class="wishlist-image">
+
+                                <a href="product.html?id=${encodeURIComponent(productId)}">
+
+                                    <img
+                                        src="${image}"
+                                        alt="${product.name}"
+                                        loading="lazy">
+
+                                </a>
+
+                                <button
+                                    class="remove-wishlist"
+                                    data-id="${productId}"
+                                    aria-label="Remove ${product.name} from wishlist">
+
+                                    <i class="fas fa-trash"></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="wishlist-info">
+
+                                <p class="category">
+                                    ${product.category || "Fashion"}
+                                </p>
+
+                                <h3>${product.name}</h3>
+
+                                <p class="wishlist-price">
+                                    K${Number(product.price).toLocaleString("en-ZM")}
+                                </p>
+
+                                <button
+                                    class="wishlist-add-cart"
+                                    data-id="${productId}">
+
+                                    <i class="fas fa-shopping-bag"></i>
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }).join("");
+
+
+                // REMOVE PRODUCTS
+
+                wishlistContainer
+                    .querySelectorAll(".remove-wishlist")
+                    .forEach(button => {
+
+                        button.addEventListener("click", () => {
+
+                            const id = button.dataset.id;
+
+                            const updatedWishlist = getWishlist()
+                                .filter(item => String(item) !== id);
+
+                            localStorage.setItem(
+                                "kasBoutiqueWishlist",
+                                JSON.stringify(updatedWishlist)
+                            );
+
+                            if (typeof window.updateShoppingCounters === "function") {
+                                window.updateShoppingCounters();
+                            }
+
+                            renderWishlist();
+
+                        });
+
+                    });
+
+
+                // ADD TO CART
+
+                wishlistContainer
+                    .querySelectorAll(".wishlist-add-cart")
+                    .forEach(button => {
+
+                        button.addEventListener("click", () => {
+
+                            const id = button.dataset.id;
+
+                            if (typeof window.addToCart === "function") {
+
+                                window.addToCart(id);
+
+                            } else {
+
+                                alert("Shopping cart is unavailable. Please refresh.");
+
+                            }
+
+                        });
+
+                    });
+
+            }
+
+
+            renderWishlist();
+
+        });
+
+    </script>
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
+

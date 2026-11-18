@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Explore premium men's fashion at KAS LUXURY BOUTIQUE. Discover stylish clothing, shoes and accessories.">
+
+    <title>Men's Collection | KAS LUXURY BOUTIQUE</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* MEN'S COLLECTION PAGE */
+
+        .men-hero {
+            min-height: 380px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+            background:
+                linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.78)),
+                url("images/card5.jpg.jpeg")
+                center/cover no-repeat;
+        }
+
+        .men-hero-content {
+            max-width: 750px;
+            color: #fff;
+        }
+
+        .men-hero-content .eyebrow {
+            color: #d4af37;
+            letter-spacing: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .men-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 7vw, 68px);
+            margin: 18px 0;
+        }
+
+        .men-hero-content p {
+            color: #e5e5e5;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .men-shop-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #080808;
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .men-shop-btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+        }
+
+        .men-collection {
+            max-width: 1200px;
+            margin: auto;
+            padding: 65px 20px;
+        }
+
+        .men-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .men-heading span {
+            color: #b68b24;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .men-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            margin: 12px 0;
+        }
+
+        .men-heading p {
+            opacity: 0.75;
+        }
+
+        .men-products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .men-product-card {
+            background: var(--black-card, #171717);
+            border: 1px solid var(--border, #333);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .men-product-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .men-product-image {
+            position: relative;
+            height: 270px;
+            overflow: hidden;
+        }
+
+        .men-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .men-product-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .men-product-info {
+            padding: 18px;
+        }
+
+        .men-product-category {
+            color: #d4af37;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .men-product-info h3 {
+            font-size: 16px;
+            margin: 9px 0;
+        }
+
+        .men-product-price {
+            color: #d4af37;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .men-product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .men-product-actions button {
+            flex: 1;
+            padding: 11px 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .men-add-btn {
+            background: #d4af37;
+            color: #080808;
+        }
+
+        .men-view-btn {
+            background: transparent;
+            color: var(--white, #fff);
+            border: 1px solid #d4af37 !important;
+        }
+
+        .men-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 15px;
+            border: 1px solid var(--border, #333);
+            border-radius: 5px;
+        }
+
+        .men-empty i {
+            font-size: 35px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .men-back-shop {
+            display: inline-block;
+            margin-top: 18px;
+            color: #d4af37;
+        }
+
+        @media (max-width: 900px) {
+            .men-products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .men-products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .men-product-image {
+                height: 320px;
+            }
+
+            .men-hero {
+                min-height: 320px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+    <div class="animated-background">
+        <div class="animated-words">
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>MEN'S COLLECTION</span>
+                <span>ELEGANCE</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEADER -->
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                KAS <span>LUXURY</span>
+            </a>
+
+            <button class="menu-toggle"
+                    id="menuToggle"
+                    aria-label="Open navigation menu"
+                    aria-expanded="false">
+                <i class="fas fa-bars"></i>
+            </button>
+
+            <nav>
+                <ul class="nav-menu" id="navMenu">
+
+                    <li><a href="index.html">Home</a></li>
+
+                    <li><a href="shop.html">Shop All</a></li>
+
+                    <li><a href="men.html" class="active">Men</a></li>
+
+                    <li><a href="women.html">Women</a></li>
+
+                    <li><a href="shoes.html">Shoes</a></li>
+
+                    <li><a href="accessories.html">Accessories</a></li>
+
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span id="wishlistCount">0</span>
+                </a>
+
+                <a href="cart.html" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cartCount">0</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- MEN HERO -->
+    <section class="men-hero">
+
+        <div class="men-hero-content">
+
+            <span class="eyebrow">KAS LUXURY BOUTIQUE</span>
+
+            <h1>Men's Collection</h1>
+
+            <p>
+                Discover timeless elegance, modern fashion and
+                premium styles designed for confident men.
+            </p>
+
+            <a href="#menProducts" class="men-shop-btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- MEN PRODUCTS -->
+    <section class="men-collection" id="menProducts">
+
+        <div class="men-heading">
+
+            <span>Style Meets Confidence</span>
+
+            <h2>Shop Men's Fashion</h2>
+
+            <p>Discover our men's collection.</p>
+
+        </div>
+
+        <div class="men-products-grid" id="menProductsGrid">
+
+            <p>Loading men's collection...</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div>
+                <h2>KAS LUXURY BOUTIQUE</h2>
+
+                <p>
+                    Elegance • Confidence • Style
+                </p>
+            </div>
+
+            <div>
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a><br>
+                <a href="shop.html">Shop All</a><br>
+                <a href="men.html">Men's Collection</a><br>
+                <a href="women.html">Women's Collection</a>
+            </div>
+
+        </div>
+
+        <p class="footer-bottom">
+            &copy; <span id="currentYear"></span>
+            KAS LUXURY BOUTIQUE. All rights reserved.
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+    <script src="js/products.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const grid = document.getElementById("menProductsGrid");
+
+            function displayMenProducts() {
+
+                const products = window.boutiqueProducts || [];
+
+                const menProducts = products.filter(product => {
+
+                    const category = String(product.category || "")
+                        .toLowerCase();
+
+                    return category.includes("men");
+
+                });
+
+                if (menProducts.length === 0) {
+
+                    grid.innerHTML = `
+                        <div class="men-empty">
+                            <i class="fas fa-shirt"></i>
+
+                            <h3>Men's Collection Coming Soon</h3>
+
+                            <p>
+                                New men's fashion products will be
+                                available here soon.
+                            </p>
+
+                            <a href="shop.html" class="men-back-shop">
+                                Explore All Products
+                            </a>
+                        </div>
+                    `;
+
+                    return;
+                }
+
+                grid.innerHTML = menProducts.map(product => {
+
+                    const price = Number(product.price || 0)
+                        .toLocaleString("en-ZM");
+
+                    return `
+                        <article class="men-product-card">
+
+                            <div class="men-product-image">
+
+                                <img
+                                    src="${product.image}"
+                                    alt="${product.name}"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                            <div class="men-product-info">
+
+                                <span class="men-product-category">
+                                    ${product.category}
+                                </span>
+
+                                <h3>${product.name}</h3>
+
+                                <div class="men-product-price">
+                                    K${price}
+                                </div>
+
+                                <div class="men-product-actions">
+
+                                    <button
+                                        class="men-add-btn"
+                                        onclick="addToCart('${product.id}')">
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Add to Cart
+                                    </button>
+
+                                    <button
+                                        class="men-view-btn"
+                                        onclick="window.location.href='product.html?id=${encodeURIComponent(product.id)}'">
+                                        View
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+                    `;
+
+                }).join("");
+
+            }
+
+            displayMenProducts();
+
+        });
+    </script>
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,853 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Shop premium men's and women's fashion, shoes and accessories at KAS LUXURY BOUTIQUE.">
+
+    <title>Shop | KAS LUXURY BOUTIQUE</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Website CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* =====================================
+           SHOP PAGE
+        ===================================== */
+
+        .shop-page {
+            min-height: 100vh;
+            padding: 55px 5%;
+            position: relative;
+        }
+
+        .shop-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .shop-heading h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 5vw, 52px);
+            color: var(--gold);
+            margin-bottom: 12px;
+        }
+
+        .shop-heading p {
+            color: var(--grey);
+            line-height: 1.7;
+        }
+
+        .shop-breadcrumb {
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: var(--grey);
+        }
+
+        .shop-breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        /* FILTER AREA */
+
+        .shop-toolbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .shop-search {
+            flex: 1;
+            min-width: 220px;
+            position: relative;
+        }
+
+        .shop-search input {
+            width: 100%;
+            padding: 13px 15px 13px 42px;
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            background: var(--black);
+            color: var(--white);
+            outline: none;
+        }
+
+        .shop-search i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gold);
+        }
+
+        .shop-toolbar select {
+            padding: 13px 15px;
+            background: var(--black);
+            color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 7px;
+            cursor: pointer;
+        }
+
+        .shop-toolbar select:focus,
+        .shop-search input:focus {
+            border-color: var(--gold);
+        }
+
+        /* CATEGORY BUTTONS */
+
+        .shop-categories {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+
+        .category-filter {
+            padding: 11px 22px;
+            border: 1px solid var(--border);
+            border-radius: 30px;
+            background: var(--black-card);
+            color: var(--white);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .category-filter:hover,
+        .category-filter.active {
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
+        }
+
+        /* PRODUCT INFORMATION */
+
+        .shop-results {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 22px;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .shop-results h2 {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+        }
+
+        .shop-results p {
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        /* PRODUCT GRID */
+
+        .shop-products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 25px;
+        }
+
+        .shop-products-grid .product-card {
+            min-width: 0;
+        }
+
+        .shop-products-grid .product-image img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* EMPTY STATE */
+
+        .shop-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 65px 20px;
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .shop-empty i {
+            font-size: 45px;
+            color: var(--gold);
+            margin-bottom: 20px;
+        }
+
+        .shop-empty h3 {
+            color: var(--white);
+            margin-bottom: 10px;
+        }
+
+        .shop-empty p {
+            color: var(--grey);
+        }
+
+        .clear-filters {
+            margin-top: 20px;
+            padding: 12px 25px;
+            background: var(--gold);
+            color: var(--black);
+            border: none;
+            border-radius: 6px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* MOBILE */
+
+        @media (max-width: 1100px) {
+            .shop-products-grid {
+                grid-template-columns: repeat(3, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .shop-page {
+                padding: 35px 4%;
+            }
+
+            .shop-products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 15px;
+            }
+
+            .shop-products-grid .product-image img {
+                height: 220px;
+            }
+
+            .shop-toolbar {
+                align-items: stretch;
+            }
+
+            .shop-search {
+                flex-basis: 100%;
+            }
+
+            .shop-toolbar select {
+                flex: 1;
+                min-width: 0;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .shop-products-grid {
+                gap: 10px;
+            }
+
+            .shop-products-grid .product-image img {
+                height: 175px;
+            }
+
+            .category-filter {
+                padding: 9px 15px;
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+        <div class="animated-words">
+
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>ELEGANCE</span>
+                <span>CONFIDENCE</span>
+            </div>
+
+            <div class="word-track">
+                <span>PREMIUM FASHION</span>
+                <span>STYLE</span>
+                <span>LUXURY</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ANNOUNCEMENT BAR -->
+
+    <div class="announcement-bar">
+        <p>WELCOME TO KAS LUXURY BOUTIQUE | ELEGANCE • CONFIDENCE • STYLE</p>
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                <span>KAS</span> LUXURY BOUTIQUE
+            </a>
+
+            <div class="header-actions">
+
+                <a href="index.html" aria-label="Home">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <a href="cart.html" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </a>
+
+            </div>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+        <nav class="navigation">
+
+            <ul class="nav-menu" id="navMenu">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- SHOP PAGE -->
+
+    <main class="shop-page">
+
+        <div class="shop-breadcrumb">
+            <a href="index.html">Home</a>
+            <span> / </span>
+            <span>Shop</span>
+        </div>
+
+
+        <!-- PAGE HEADING -->
+
+        <section class="shop-heading">
+
+            <h1>Discover Our Collection</h1>
+
+            <p>
+                Explore premium fashion, footwear and accessories.
+                Find your style. Express your confidence.
+            </p>
+
+        </section>
+
+
+        <!-- SEARCH AND SORT -->
+
+        <section class="shop-toolbar">
+
+            <div class="shop-search">
+
+                <i class="fas fa-search"></i>
+
+                <input
+                    type="search"
+                    id="shopSearch"
+                    placeholder="Search products..."
+                    aria-label="Search products">
+
+            </div>
+
+
+            <select id="categorySelect" aria-label="Filter by category">
+
+                <option value="all">All Categories</option>
+                <option value="men">Men</option>
+                <option value="women">Women</option>
+                <option value="shoes">Shoes</option>
+                <option value="accessories">Accessories</option>
+
+            </select>
+
+
+            <select id="sortProducts" aria-label="Sort products">
+
+                <option value="default">Sort: Featured</option>
+                <option value="low-high">Price: Low to High</option>
+                <option value="high-low">Price: High to Low</option>
+                <option value="name">Name: A to Z</option>
+
+            </select>
+
+        </section>
+
+
+        <!-- CATEGORY BUTTONS -->
+
+        <section class="shop-categories">
+
+            <button class="category-filter active" data-category="all">
+                All Products
+            </button>
+
+            <button class="category-filter" data-category="men">
+                Men
+            </button>
+
+            <button class="category-filter" data-category="women">
+                Women
+            </button>
+
+            <button class="category-filter" data-category="shoes">
+                Shoes
+            </button>
+
+            <button class="category-filter" data-category="accessories">
+                Accessories
+            </button>
+
+        </section>
+
+
+        <!-- PRODUCT RESULTS -->
+
+        <section>
+
+            <div class="shop-results">
+
+                <h2>Our Products</h2>
+
+                <p id="productResults">Loading products...</p>
+
+            </div>
+
+
+            <div class="shop-products-grid" id="shopProducts">
+
+                <!-- Products will load using JavaScript -->
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                KAS LUXURY BOUTIQUE.
+                All Rights Reserved.
+            </p>
+
+            <p>Elegance • Confidence • Style</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/products.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
+    <!-- SHOP PAGE JAVASCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const shopProducts = document.getElementById("shopProducts");
+            const shopSearch = document.getElementById("shopSearch");
+            const categorySelect = document.getElementById("categorySelect");
+            const sortProducts = document.getElementById("sortProducts");
+            const productResults = document.getElementById("productResults");
+            const categoryButtons = document.querySelectorAll(".category-filter");
+
+            let selectedCategory = "all";
+            let searchTerm = "";
+            let sortOption = "default";
+
+
+            // GET PRODUCTS FROM products.js
+
+            const products = window.boutiqueProducts || [];
+
+
+            // READ SEARCH FROM URL
+
+            const urlParams = new URLSearchParams(window.location.search);
+
+            const initialSearch = urlParams.get("search");
+
+            if (initialSearch) {
+                searchTerm = initialSearch.toLowerCase();
+                shopSearch.value = initialSearch;
+            }
+
+
+            // DISPLAY PRODUCTS
+
+            function displayShopProducts() {
+
+                let filteredProducts = [...products];
+
+
+                // CATEGORY FILTER
+
+                if (selectedCategory !== "all") {
+
+                    filteredProducts = filteredProducts.filter(product =>
+                        String(product.category).toLowerCase().includes(selectedCategory)
+                    );
+
+                }
+
+
+                // SEARCH FILTER
+
+                if (searchTerm) {
+
+                    filteredProducts = filteredProducts.filter(product => {
+
+                        const searchableText = [
+                            product.name,
+                            product.category,
+                            product.description,
+                            product.badge
+                        ].join(" ").toLowerCase();
+
+                        return searchableText.includes(searchTerm);
+
+                    });
+
+                }
+
+
+                // SORT PRODUCTS
+
+                if (sortOption === "low-high") {
+
+                    filteredProducts.sort((a, b) =>
+                        Number(a.price) - Number(b.price)
+                    );
+
+                }
+
+                if (sortOption === "high-low") {
+
+                    filteredProducts.sort((a, b) =>
+                        Number(b.price) - Number(a.price)
+                    );
+
+                }
+
+                if (sortOption === "name") {
+
+                    filteredProducts.sort((a, b) =>
+                        a.name.localeCompare(b.name)
+                    );
+
+                }
+
+
+                // UPDATE RESULT COUNT
+
+                productResults.textContent =
+                    `${filteredProducts.length} product(s) found`;
+
+
+                // EMPTY PRODUCTS
+
+                if (filteredProducts.length === 0) {
+
+                    shopProducts.innerHTML = `
+                        <div class="shop-empty">
+
+                            <i class="fas fa-search"></i>
+
+                            <h3>No Products Found</h3>
+
+                            <p>
+                                We couldn't find products matching your search.
+                            </p>
+
+                            <button class="clear-filters" id="clearFilters">
+                                Clear Filters
+                            </button>
+
+                        </div>
+                    `;
+
+                    document.getElementById("clearFilters")
+                        .addEventListener("click", clearFilters);
+
+                    return;
+
+                }
+
+
+                // RENDER PRODUCT CARDS
+
+                shopProducts.innerHTML = filteredProducts.map(product => {
+
+                    const productId = String(product.id);
+
+                    const image = product.image ||
+                        "https://placehold.co/600x700/111111/D4AF37?text=KAS+LUXURY";
+
+                    const oldPrice = product.oldPrice
+                        ? `<span class="old-price">K${Number(product.oldPrice).toLocaleString("en-ZM")}</span>`
+                        : "";
+
+                    const badge = product.badge
+                        ? `<span class="product-badge">${product.badge}</span>`
+                        : "";
+
+                    return `
+
+                        <article class="product-card">
+
+                            <div class="product-image">
+
+                                <a href="product.html?id=${encodeURIComponent(productId)}">
+
+                                    <img
+                                        src="${image}"
+                                        alt="${product.name}"
+                                        loading="lazy">
+
+                                </a>
+
+                                ${badge}
+
+                                <button
+                                    class="wishlist-btn"
+                                    onclick="toggleWishlist('${productId}')"
+                                    aria-label="Add ${product.name} to wishlist">
+
+                                    <i class="fas fa-heart"></i>
+
+                                </button>
+
+                            </div>
+
+
+                            <div class="product-info">
+
+                                <p class="product-category">
+                                    ${product.category || "Fashion"}
+                                </p>
+
+                                <h3>${product.name}</h3>
+
+                                <div class="product-price">
+
+                                    <span class="current-price">
+                                        K${Number(product.price).toLocaleString("en-ZM")}
+                                    </span>
+
+                                    ${oldPrice}
+
+                                </div>
+
+
+                                <button
+                                    class="add-to-cart-btn"
+                                    onclick="addToCart('${productId}')">
+
+                                    <i class="fas fa-shopping-bag"></i>
+                                    Add to Cart
+
+                                </button>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }).join("");
+
+            }
+
+
+            // CLEAR FILTERS
+
+            function clearFilters() {
+
+                selectedCategory = "all";
+                searchTerm = "";
+                sortOption = "default";
+
+                shopSearch.value = "";
+                categorySelect.value = "all";
+                sortProducts.value = "default";
+
+                categoryButtons.forEach(button => {
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.category === "all"
+                    );
+                });
+
+                displayShopProducts();
+
+            }
+
+
+            // SEARCH INPUT
+
+            shopSearch.addEventListener("input", () => {
+
+                searchTerm = shopSearch.value.trim().toLowerCase();
+
+                displayShopProducts();
+
+            });
+
+
+            // CATEGORY SELECT
+
+            categorySelect.addEventListener("change", () => {
+
+                selectedCategory = categorySelect.value;
+
+                categoryButtons.forEach(button => {
+
+                    button.classList.toggle(
+                        "active",
+                        button.dataset.category === selectedCategory
+                    );
+
+                });
+
+                displayShopProducts();
+
+            });
+
+
+            // SORT PRODUCTS
+
+            sortProducts.addEventListener("change", () => {
+
+                sortOption = sortProducts.value;
+
+                displayShopProducts();
+
+            });
+
+
+            // CATEGORY BUTTONS
+
+            categoryButtons.forEach(button => {
+
+                button.addEventListener("click", () => {
+
+                    selectedCategory = button.dataset.category;
+
+                    categorySelect.value = selectedCategory;
+
+                    categoryButtons.forEach(item => {
+                        item.classList.remove("active");
+                    });
+
+                    button.classList.add("active");
+
+                    displayShopProducts();
+
+                });
+
+            });
+
+
+            // INITIAL DISPLAY
+
+            if (products.length === 0) {
+
+                productResults.textContent = "No products available.";
+
+                shopProducts.innerHTML = `
+                    <div class="shop-empty">
+
+                        <i class="fas fa-box-open"></i>
+
+                        <h3>Products Not Available</h3>
+
+                        <p>
+                            Please check that js/products.js is loading correctly.
+                        </p>
+
+                    </div>
+                `;
+
+            } else {
+
+                displayShopProducts();
+
+            }
+
+        });
+
+    </script>
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

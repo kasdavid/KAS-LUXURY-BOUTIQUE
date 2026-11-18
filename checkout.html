@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="description" content="Complete your shopping order at KAS LUXURY BOUTIQUE.">
+
+<title>Checkout | KAS LUXURY BOUTIQUE</title>
+
+<!-- GOOGLE FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- FONT AWESOME -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+<!-- STYLESHEETS -->
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="animations.css">
+<link rel="stylesheet" href="responsive.css">
+
+<style>
+
+    /* =====================================
+       CHECKOUT PAGE
+    ===================================== */
+
+    .checkout-page {
+        min-height: 75vh;
+        padding: 75px 0;
+    }
+
+    .checkout-heading {
+        text-align: center;
+        margin-bottom: 45px;
+    }
+
+    .checkout-heading span {
+        color: var(--gold);
+        font-size: 11px;
+        font-weight: 800;
+        letter-spacing: 4px;
+    }
+
+    .checkout-heading h1 {
+        margin-top: 12px;
+        font-family: var(--font-heading);
+        font-size: clamp(32px, 5vw, 48px);
+    }
+
+    .checkout-heading p {
+        margin-top: 10px;
+        color: var(--grey);
+        font-size: 13px;
+    }
+
+    .checkout-layout {
+        display: grid;
+        grid-template-columns: 1fr 380px;
+        gap: 30px;
+        align-items: start;
+    }
+
+    .checkout-form-section,
+    .checkout-summary {
+        padding: 28px;
+        background: var(--black-card);
+        border: 1px solid var(--border);
+        border-radius: 7px;
+    }
+
+    .checkout-section-title {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 25px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    .checkout-section-title i {
+        color: var(--gold);
+        font-size: 20px;
+    }
+
+    .checkout-section-title h2 {
+        font-family: var(--font-heading);
+        font-size: 21px;
+    }
+
+    /* FORM */
+
+    .checkout-form {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+
+    .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .form-group.full-width {
+        grid-column: 1 / -1;
+    }
+
+    .form-group label {
+        color: var(--grey);
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        width: 100%;
+        padding: 14px;
+        background: var(--black);
+        color: var(--white);
+        border: 1px solid var(--border);
+        border-radius: 4px;
+        outline: none;
+        font-size: 12px;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+        border-color: var(--gold);
+    }
+
+    .form-group textarea {
+        min-height: 100px;
+        resize: vertical;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+        color: var(--grey-dark);
+    }
+
+    .form-group select option {
+        background: var(--black);
+        color: var(--white);
+    }
+
+    /* PAYMENT INFORMATION */
+
+    .payment-notice {
+        grid-column: 1 / -1;
+        padding: 17px;
+        background: rgba(212, 175, 55, 0.07);
+        border: 1px solid var(--border);
+        border-radius: 5px;
+    }
+
+    .payment-notice h3 {
+        color: var(--gold);
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .payment-notice p {
+        color: var(--grey);
+        font-size: 12px;
+        line-height: 1.8;
+    }
+
+    /* ORDER SUMMARY */
+
+    .checkout-summary h2 {
+        margin-bottom: 25px;
+        font-family: var(--font-heading);
+        font-size: 23px;
+    }
+
+    .checkout-products {
+        display: flex;
+        flex-direction: column;
+        gap: 17px;
+        margin-bottom: 25px;
+    }
+
+    .checkout-product {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+
+    .checkout-product img {
+        width: 65px;
+        height: 75px;
+        object-fit: cover;
+        border-radius: 4px;
+    }
+
+    .checkout-product-info {
+        flex: 1;
+    }
+
+    .checkout-product-info h3 {
+        font-size: 12px;
+        font-weight: 600;
+    }
+
+    .checkout-product-info p {
+        margin-top: 5px;
+        color: var(--grey);
+        font-size: 11px;
+    }
+
+    .checkout-product-price {
+        color: var(--gold-light);
+        font-size: 12px;
+        font-weight: 800;
+    }
+
+    .checkout-total-row {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        margin-bottom: 17px;
+        color: var(--grey);
+        font-size: 12px;
+    }
+
+    .checkout-total-row strong {
+        color: var(--white);
+    }
+
+    .checkout-grand-total {
+        display: flex;
+        justify-content: space-between;
+        gap: 15px;
+        padding-top: 20px;
+        margin-top: 20px;
+        border-top: 1px solid var(--border);
+        font-size: 14px;
+        font-weight: 800;
+    }
+
+    .checkout-grand-total strong {
+        color: var(--gold-light);
+        font-size: 20px;
+    }
+
+    .place-order-btn {
+        width: 100%;
+        margin-top: 25px;
+    }
+
+    .checkout-back {
+        display: block;
+        margin-top: 20px;
+        color: var(--gold);
+        text-align: center;
+        font-size: 12px;
+    }
+
+    /* EMPTY CART */
+
+    .checkout-empty {
+        padding: 55px 20px;
+        text-align: center;
+        background: var(--black-card);
+        border: 1px solid var(--border);
+    }
+
+    .checkout-empty i {
+        color: var(--gold);
+        font-size: 50px;
+        margin-bottom: 20px;
+    }
+
+    .checkout-empty h2 {
+        font-family: var(--font-heading);
+    }
+
+    .checkout-empty p {
+        margin: 12px 0 25px;
+        color: var(--grey);
+        font-size: 13px;
+    }
+
+    /* RESPONSIVE */
+
+    @media (max-width: 950px) {
+
+        .checkout-layout {
+            grid-template-columns: 1fr;
+        }
+
+    }
+
+    @media (max-width: 550px) {
+
+        .checkout-page {
+            padding: 50px 0;
+        }
+
+        .checkout-form-section,
+        .checkout-summary {
+            padding: 18px;
+        }
+
+        .checkout-form {
+            grid-template-columns: 1fr;
+            gap: 17px;
+        }
+
+        .form-group.full-width,
+        .payment-notice {
+            grid-column: auto;
+        }
+
+    }
+
+</style>
+```
+
+</head>
+
+<body>
+
+```
+<!-- ANNOUNCEMENT -->
+
+<div class="announcement-bar">
+
+    <p>
+        <i class="fas fa-crown"></i>
+        KAS LUXURY BOUTIQUE
+        <span>Elegance • Confidence • Style</span>
+    </p>
+
+</div>
+
+
+<!-- HEADER -->
+
+<header class="site-header">
+
+    <div class="container">
+
+        <div class="header-main">
+
+            <a href="index.html" class="brand-logo">
+
+                <span class="logo-icon">
+                    <i class="fas fa-crown"></i>
+                </span>
+
+                <span class="logo-text">
+                    KAS
+                    <strong>LUXURY</strong>
+                    <small>BOUTIQUE</small>
+                </span>
+
+            </a>
+
+            <div class="header-actions">
+
+                <a href="index.html" class="header-action">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+
+                <a href="cart.html" class="header-action">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span>Cart</span>
+                    <b id="cartCount">0</b>
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</header>
+
+
+<!-- CHECKOUT -->
+
+<main class="checkout-page">
+
+    <div class="container">
+
+        <div class="checkout-heading">
+
+            <span>ALMOST YOURS</span>
+
+            <h1>Secure Checkout</h1>
+
+            <p>
+                Enter your details to submit your order request.
+            </p>
+
+        </div>
+
+
+        <div id="checkoutContent">
+
+            <!-- CHECKOUT CONTENT WILL LOAD HERE -->
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer class="site-footer">
+
+    <div class="container">
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                KAS LUXURY BOUTIQUE.
+                All Rights Reserved.
+            </p>
+
+            <p>Elegance • Confidence • Style</p>
+
+        </div>
+
+    </div>
+
+</footer>
+
+
+<!-- CHECKOUT JAVASCRIPT -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", () => {
+
+        document.getElementById("currentYear").textContent =
+            new Date().getFullYear();
+
+        renderCheckout();
+
+    });
+
+
+    // GET CART
+
+    function getCheckoutCart() {
+
+        return JSON.parse(
+            localStorage.getItem("kasBoutiqueCart")
+        ) || [];
+
+    }
+
+
+    // FORMAT KWACHA
+
+    function formatCheckoutPrice(price) {
+
+        return "K" + Number(price).toLocaleString("en-ZM");
+
+    }
+
+
+    // DISPLAY CHECKOUT
+
+    function renderCheckout() {
+
+        const content =
+            document.getElementById("checkoutContent");
+
+        const cart = getCheckoutCart();
+
+        const cartCount =
+            document.getElementById("cartCount");
+
+        cartCount.textContent = cart.reduce(
+            (total, item) => total + item.quantity,
+            0
+        );
+
+
+        if (cart.length === 0) {
+
+            content.innerHTML = `
+
+                <div class="checkout-empty">
+
+                    <i class="fas fa-shopping-bag"></i>
+
+                    <h2>Your Shopping Cart Is Empty</h2>
+
+                    <p>
+                        Add some products before proceeding to checkout.
+                    </p>
+
+                    <a href="index.html" class="btn-gold">
+                        Start Shopping
+                    </a>
+
+                </div>
+
+            `;
+
+            return;
+
+        }
+
+
+        const subtotal = cart.reduce(
+            (total, item) =>
+                total + item.price * item.quantity,
+            0
+        );
+
+
+        content.innerHTML = `
+
+            <div class="checkout-layout">
+
+
+                <!-- CUSTOMER INFORMATION -->
+
+                <section class="checkout-form-section">
+
+                    <div class="checkout-section-title">
+
+                        <i class="fas fa-user-circle"></i>
+
+                        <h2>Customer Information</h2>
+
+                    </div>
+
+
+                    <form id="checkoutForm" class="checkout-form">
+
+                        <div class="form-group full-width">
+
+                            <label for="customerName">
+                                Full Name *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerName"
+                                name="customerName"
+                                placeholder="Enter your full name"
+                                autocomplete="name"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerEmail">
+                                Email Address *
+                            </label>
+
+                            <input
+                                type="email"
+                                id="customerEmail"
+                                name="customerEmail"
+                                placeholder="example@email.com"
+                                autocomplete="email"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerPhone">
+                                Phone Number *
+                            </label>
+
+                            <input
+                                type="tel"
+                                id="customerPhone"
+                                name="customerPhone"
+                                placeholder="+260..."
+                                autocomplete="tel"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="checkout-section-title full-width">
+
+                            <i class="fas fa-map-marker-alt"></i>
+
+                            <h2>Delivery Information</h2>
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label for="customerAddress">
+                                Delivery Address *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerAddress"
+                                name="customerAddress"
+                                placeholder="House number, street or area"
+                                autocomplete="street-address"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerCity">
+                                City / Town *
+                            </label>
+
+                            <input
+                                type="text"
+                                id="customerCity"
+                                name="customerCity"
+                                placeholder="e.g. Lusaka"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <label for="customerProvince">
+                                Province *
+                            </label>
+
+                            <select
+                                id="customerProvince"
+                                name="customerProvince"
+                                required
+                            >
+
+                                <option value="">
+                                    Select Province
+                                </option>
+
+                                <option>Central</option>
+                                <option>Copperbelt</option>
+                                <option>Eastern</option>
+                                <option>Luapula</option>
+                                <option>Lusaka</option>
+                                <option>Muchinga</option>
+                                <option>Northern</option>
+                                <option>North-Western</option>
+                                <option>Southern</option>
+                                <option>Western</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <label for="orderNotes">
+                                Additional Delivery Instructions
+                            </label>
+
+                            <textarea
+                                id="orderNotes"
+                                name="orderNotes"
+                                placeholder="Optional delivery instructions..."
+                            ></textarea>
+
+                        </div>
+
+
+                        <div class="payment-notice">
+
+                            <h3>
+                                <i class="fas fa-info-circle"></i>
+                                Payment arrangements
+                            </h3>
+
+                            <p>
+                                Your order is currently an order request.
+                                Payment methods, delivery fees and final
+                                arrangements will be confirmed before
+                                payment is made.
+                            </p>
+
+                        </div>
+
+
+                        <div class="form-group full-width">
+
+                            <button
+                                type="submit"
+                                class="btn-gold place-order-btn"
+                            >
+                                Submit Order Request
+                                <i class="fas fa-arrow-right"></i>
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </section>
+
+
+                <!-- ORDER SUMMARY -->
+
+                <aside class="checkout-summary">
+
+                    <h2>Your Order</h2>
+
+                    <div class="checkout-products">
+
+                        ${cart.map(item => `
+
+                            <div class="checkout-product">
+
+                                <img
+                                    src="${item.image}"
+                                    alt="${item.name}"
+                                >
+
+                                <div class="checkout-product-info">
+
+                                    <h3>${item.name}</h3>
+
+                                    <p>
+                                        Quantity: ${item.quantity}
+                                    </p>
+
+                                </div>
+
+                                <span class="checkout-product-price">
+                                    ${formatCheckoutPrice(
+                                        item.price * item.quantity
+                                    )}
+                                </span>
+
+                            </div>
+
+                        `).join("")}
+
+                    </div>
+
+
+                    <div class="checkout-total-row">
+
+                        <span>Subtotal</span>
+
+                        <strong>
+                            ${formatCheckoutPrice(subtotal)}
+                        </strong>
+
+                    </div>
+
+
+                    <div class="checkout-total-row">
+
+                        <span>Delivery</span>
+
+                        <strong>To be confirmed</strong>
+
+                    </div>
+
+
+                    <div class="checkout-grand-total">
+
+                        <span>Order Total</span>
+
+                        <strong>
+                            ${formatCheckoutPrice(subtotal)}
+                        </strong>
+
+                    </div>
+
+
+                    <a href="cart.html" class="checkout-back">
+
+                        <i class="fas fa-arrow-left"></i>
+
+                        Back to Shopping Cart
+
+                    </a>
+
+                </aside>
+
+            </div>
+
+        `;
+
+
+        document.getElementById("checkoutForm")
+            .addEventListener("submit", submitOrderRequest);
+
+    }
+
+
+    // SUBMIT ORDER REQUEST
+
+    function submitOrderRequest(event) {
+
+        event.preventDefault();
+
+        const cart = getCheckoutCart();
+
+        if (cart.length === 0) {
+            alert("Your shopping cart is empty.");
+            return;
+        }
+
+        const form = event.target;
+
+        if (!form.reportValidity()) {
+            return;
+        }
+
+        const order = {
+
+            orderNumber:
+                "KAS-" + Date.now(),
+
+            customer: {
+
+                name: document.getElementById("customerName").value.trim(),
+
+                email: document.getElementById("customerEmail").value.trim(),
+
+                phone: document.getElementById("customerPhone").value.trim(),
+
+                address: document.getElementById("customerAddress").value.trim(),
+
+                city: document.getElementById("customerCity").value.trim(),
+
+                province: document.getElementById("customerProvince").value,
+
+                notes: document.getElementById("orderNotes").value.trim()
+
+            },
+
+            products: cart,
+
+            subtotal: cart.reduce(
+                (total, item) =>
+                    total + item.price * item.quantity,
+                0
+            ),
+
+            status: "Pending order request",
+
+            createdAt: new Date().toISOString()
+
+        };
+
+
+        // SAVE DEMONSTRATION ORDER IN THIS BROWSER
+
+        const savedOrders = JSON.parse(
+            localStorage.getItem("kasBoutiqueOrders")
+        ) || [];
+
+        savedOrders.push(order);
+
+        localStorage.setItem(
+            "kasBoutiqueOrders",
+            JSON.stringify(savedOrders)
+        );
+
+
+        // SHOW CONFIRMATION
+
+        document.getElementById("checkoutContent").innerHTML = `
+
+            <div class="checkout-empty">
+
+                <i class="fas fa-check-circle"></i>
+
+                <h2>Order Request Saved!</h2>
+
+                <p>
+                    Your demonstration order request has been saved
+                    in this browser.
+                </p>
+
+                <p>
+                    Reference:
+                    <strong>${order.orderNumber}</strong>
+                </p>
+
+                <p>
+                    This is not yet an online order submission.
+                    The boutique needs a backend to receive and
+                    manage customer orders.
+                </p>
+
+                <a href="index.html" class="btn-gold">
+                    Continue Shopping
+                </a>
+
+            </div>
+
+        `;
+
+
+        // CLEAR CART
+
+        localStorage.removeItem("kasBoutiqueCart");
+
+        document.getElementById("cartCount").textContent = "0";
+
+    }
+
+</script>
+
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

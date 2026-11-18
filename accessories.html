@@ -1,0 +1,566 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover luxury fashion accessories at KAS LUXURY BOUTIQUE. Shop watches, bags, sunglasses, belts and more.">
+
+    <title>Accessories Collection | KAS LUXURY BOUTIQUE</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+
+        /* ACCESSORIES HERO */
+
+        .accessories-hero {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.58),
+                    rgba(0, 0, 0, 0.80)
+                ),
+                url("https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1600&auto=format&fit=crop")
+                center/cover no-repeat;
+        }
+
+        .accessories-hero-content {
+            max-width: 750px;
+            color: #fff;
+        }
+
+        .accessories-hero-content .eyebrow {
+            color: #d4af37;
+            letter-spacing: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .accessories-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 7vw, 68px);
+            margin: 18px 0;
+        }
+
+        .accessories-hero-content p {
+            color: #eee;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .accessories-shop-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #080808;
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .accessories-shop-btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+        }
+
+
+        /* ACCESSORIES COLLECTION */
+
+        .accessories-collection {
+            max-width: 1200px;
+            margin: auto;
+            padding: 65px 20px;
+        }
+
+        .accessories-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .accessories-heading span {
+            color: #b68b24;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .accessories-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            margin: 12px 0;
+        }
+
+        .accessories-heading p {
+            opacity: 0.75;
+        }
+
+
+        /* PRODUCT GRID */
+
+        .accessories-products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .accessories-product-card {
+            background: var(--black-card, #171717);
+            border: 1px solid var(--border, #333);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .accessories-product-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .accessories-product-image {
+            position: relative;
+            height: 270px;
+            overflow: hidden;
+        }
+
+        .accessories-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .accessories-product-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .accessories-product-info {
+            padding: 18px;
+        }
+
+        .accessories-product-category {
+            color: #d4af37;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .accessories-product-info h3 {
+            font-size: 16px;
+            margin: 9px 0;
+        }
+
+        .accessories-product-price {
+            color: #d4af37;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .accessories-product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .accessories-product-actions button {
+            flex: 1;
+            padding: 11px 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .accessories-add-btn {
+            background: #d4af37;
+            color: #080808;
+        }
+
+        .accessories-view-btn {
+            background: transparent;
+            color: var(--white, #fff);
+            border: 1px solid #d4af37 !important;
+        }
+
+
+        /* EMPTY COLLECTION */
+
+        .accessories-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 15px;
+            border: 1px solid var(--border, #333);
+            border-radius: 5px;
+        }
+
+        .accessories-empty i {
+            font-size: 35px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .accessories-back-shop {
+            display: inline-block;
+            margin-top: 18px;
+            color: #d4af37;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .accessories-products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .accessories-products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .accessories-product-image {
+                height: 320px;
+            }
+
+            .accessories-hero {
+                min-height: 320px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+
+        <div class="animated-words">
+
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>PREMIUM ACCESSORIES</span>
+                <span>ELEGANCE</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                KAS <span>LUXURY</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <nav>
+
+                <ul class="nav-menu" id="navMenu">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="shop.html">Shop All</a>
+                    </li>
+
+                    <li>
+                        <a href="men.html">Men</a>
+                    </li>
+
+                    <li>
+                        <a href="women.html">Women</a>
+                    </li>
+
+                    <li>
+                        <a href="shoes.html">Shoes</a>
+                    </li>
+
+                    <li>
+                        <a href="accessories.html" class="active">Accessories</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span id="wishlistCount">0</span>
+                </a>
+
+                <a href="cart.html" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cartCount">0</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- ACCESSORIES HERO -->
+
+    <section class="accessories-hero">
+
+        <div class="accessories-hero-content">
+
+            <span class="eyebrow">
+                KAS LUXURY BOUTIQUE
+            </span>
+
+            <h1>Luxury Accessories</h1>
+
+            <p>
+                Complete your look with carefully selected
+                accessories. Discover stylish details that
+                bring elegance and personality to every outfit.
+            </p>
+
+            <a href="#accessoriesProducts" class="accessories-shop-btn">
+                Explore Accessories
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- ACCESSORIES PRODUCTS -->
+
+    <section class="accessories-collection" id="accessoriesProducts">
+
+        <div class="accessories-heading">
+
+            <span>The Perfect Finishing Touch</span>
+
+            <h2>Shop Accessories</h2>
+
+            <p>
+                Discover accessories for every style and occasion.
+            </p>
+
+        </div>
+
+        <div class="accessories-products-grid" id="accessoriesProductsGrid">
+
+            <p>Loading accessories...</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div>
+
+                <h2>KAS LUXURY BOUTIQUE</h2>
+
+                <p>
+                    Elegance • Confidence • Style
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a><br>
+                <a href="shop.html">Shop All</a><br>
+                <a href="men.html">Men's Collection</a><br>
+                <a href="women.html">Women's Collection</a><br>
+                <a href="shoes.html">Shoes</a><br>
+                <a href="accessories.html">Accessories</a>
+
+            </div>
+
+        </div>
+
+        <p class="footer-bottom">
+
+            &copy; <span id="currentYear"></span>
+
+            KAS LUXURY BOUTIQUE. All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/products.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
+    <!-- ACCESSORIES PRODUCTS SCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const grid = document.getElementById("accessoriesProductsGrid");
+
+            function displayAccessories() {
+
+                const products = window.boutiqueProducts || [];
+
+                const accessoriesProducts = products.filter(product => {
+
+                    const category = String(product.category || "")
+                        .toLowerCase();
+
+                    return category.includes("accessories") ||
+                           category.includes("accessory");
+
+                });
+
+                if (accessoriesProducts.length === 0) {
+
+                    grid.innerHTML = `
+
+                        <div class="accessories-empty">
+
+                            <i class="fas fa-gem"></i>
+
+                            <h3>Accessories Collection Coming Soon</h3>
+
+                            <p>
+                                New accessories will be available here soon.
+                            </p>
+
+                            <a href="shop.html" class="accessories-back-shop">
+                                Explore All Products
+                            </a>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+                grid.innerHTML = accessoriesProducts.map(product => {
+
+                    const price = Number(product.price || 0)
+                        .toLocaleString("en-ZM");
+
+                    return `
+
+                        <article class="accessories-product-card">
+
+                            <div class="accessories-product-image">
+
+                                <img
+                                    src="${product.image}"
+                                    alt="${product.name}"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                            <div class="accessories-product-info">
+
+                                <span class="accessories-product-category">
+                                    ${product.category}
+                                </span>
+
+                                <h3>${product.name}</h3>
+
+                                <div class="accessories-product-price">
+                                    K${price}
+                                </div>
+
+                                <div class="accessories-product-actions">
+
+                                    <button
+                                        class="accessories-add-btn"
+                                        onclick="addToCart('${product.id}')">
+
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Add to Cart
+
+                                    </button>
+
+                                    <button
+                                        class="accessories-view-btn"
+                                        onclick="window.location.href='product.html?id=${encodeURIComponent(product.id)}'">
+
+                                        View
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }).join("");
+
+            }
+
+            displayAccessories();
+
+        });
+
+    </script>
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+

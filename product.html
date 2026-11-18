@@ -1,0 +1,858 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description"
+        content="Discover premium fashion at KAS LUXURY BOUTIQUE.">
+
+    <title>Product Details | KAS LUXURY BOUTIQUE</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- Website CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+        /* =====================================
+           PRODUCT DETAILS PAGE
+        ===================================== */
+
+        .product-page {
+            padding: 45px 5% 80px;
+            min-height: 100vh;
+        }
+
+        .breadcrumb {
+            margin-bottom: 35px;
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        .breadcrumb a {
+            color: var(--gold);
+            text-decoration: none;
+        }
+
+        .product-details-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 55px;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        /* PRODUCT GALLERY */
+
+        .product-gallery {
+            min-width: 0;
+        }
+
+        .main-product-image {
+            position: relative;
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .main-product-image img {
+            display: block;
+            width: 100%;
+            height: 570px;
+            object-fit: cover;
+        }
+
+        .gallery-thumbnails {
+            display: flex;
+            gap: 12px;
+            margin-top: 15px;
+            overflow-x: auto;
+            padding-bottom: 5px;
+        }
+
+        .gallery-thumbnail {
+            flex: 0 0 85px;
+            height: 95px;
+            border: 2px solid var(--border);
+            border-radius: 7px;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--black-card);
+            padding: 0;
+        }
+
+        .gallery-thumbnail.active {
+            border-color: var(--gold);
+        }
+
+        .gallery-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* PRODUCT INFORMATION */
+
+        .product-information {
+            padding-top: 15px;
+        }
+
+        .product-category-label {
+            color: var(--gold);
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .product-information h1 {
+            color: var(--white);
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(30px, 4vw, 43px);
+            margin-bottom: 18px;
+            line-height: 1.2;
+        }
+
+        .product-rating {
+            color: var(--gold);
+            margin-bottom: 20px;
+            font-size: 14px;
+        }
+
+        .product-rating span {
+            color: var(--grey);
+            margin-left: 8px;
+        }
+
+        .product-detail-price {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 25px;
+        }
+
+        .product-detail-price .current-price {
+            color: var(--gold);
+            font-size: 29px;
+            font-weight: 800;
+        }
+
+        .product-detail-price .old-price {
+            color: var(--grey);
+            font-size: 18px;
+            text-decoration: line-through;
+        }
+
+        .product-description {
+            color: var(--grey);
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        .product-divider {
+            border: none;
+            border-top: 1px solid var(--border);
+            margin: 25px 0;
+        }
+
+        /* PRODUCT OPTIONS */
+
+        .option-group {
+            margin-bottom: 23px;
+        }
+
+        .option-group label {
+            display: block;
+            color: var(--white);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .option-group select {
+            width: 100%;
+            max-width: 300px;
+            padding: 13px;
+            background: var(--black-card);
+            color: var(--white);
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            outline: none;
+        }
+
+        .option-group select:focus {
+            border-color: var(--gold);
+        }
+
+        .quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            width: fit-content;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .quantity-control button {
+            width: 42px;
+            height: 42px;
+            background: var(--black-card);
+            border: none;
+            color: var(--gold);
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .quantity-control input {
+            width: 55px;
+            height: 42px;
+            text-align: center;
+            background: var(--black);
+            color: var(--white);
+            border: none;
+            outline: none;
+        }
+
+        /* ACTION BUTTONS */
+
+        .product-actions {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 30px;
+        }
+
+        .detail-add-cart {
+            flex: 1;
+            min-width: 180px;
+            padding: 16px 20px;
+            background: var(--gold);
+            color: var(--black);
+            border: 1px solid var(--gold);
+            border-radius: 6px;
+            font-weight: 800;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .detail-add-cart:hover {
+            background: var(--gold-light);
+            transform: translateY(-2px);
+        }
+
+        .detail-wishlist {
+            width: 55px;
+            height: 52px;
+            background: transparent;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            border-radius: 6px;
+            font-size: 19px;
+            cursor: pointer;
+        }
+
+        .detail-wishlist:hover {
+            background: var(--gold);
+            color: var(--black);
+        }
+
+        /* PRODUCT INFORMATION BENEFITS */
+
+        .product-service-info {
+            display: grid;
+            gap: 17px;
+            margin-top: 30px;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 13px;
+            align-items: center;
+            color: var(--grey);
+            font-size: 14px;
+        }
+
+        .service-item i {
+            color: var(--gold);
+            font-size: 18px;
+            width: 22px;
+        }
+
+        /* PRODUCT NOT FOUND */
+
+        .product-not-found {
+            max-width: 650px;
+            margin: 80px auto;
+            padding: 45px 25px;
+            text-align: center;
+            background: var(--black-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+        }
+
+        .product-not-found i {
+            color: var(--gold);
+            font-size: 50px;
+            margin-bottom: 20px;
+        }
+
+        .product-not-found h2 {
+            color: var(--white);
+            margin-bottom: 12px;
+        }
+
+        .product-not-found p {
+            color: var(--grey);
+            margin-bottom: 25px;
+        }
+
+        .back-to-shop {
+            display: inline-block;
+            padding: 13px 25px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 700;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 850px) {
+            .product-details-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .main-product-image img {
+                height: 480px;
+            }
+        }
+
+        @media (max-width: 500px) {
+            .product-page {
+                padding: 30px 4% 60px;
+            }
+
+            .main-product-image img {
+                height: 360px;
+            }
+
+            .product-information h1 {
+                font-size: 29px;
+            }
+
+            .product-actions {
+                flex-direction: column;
+            }
+
+            .detail-add-cart {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+        <div class="animated-words">
+
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>ELEGANCE</span>
+                <span>CONFIDENCE</span>
+            </div>
+
+            <div class="word-track">
+                <span>PREMIUM FASHION</span>
+                <span>STYLE</span>
+                <span>LUXURY</span>
+            </div>
+
+        </div>
+    </div>
+
+
+    <!-- ANNOUNCEMENT -->
+
+    <div class="announcement-bar">
+        <p>WELCOME TO KAS LUXURY BOUTIQUE | ELEGANCE • CONFIDENCE • STYLE</p>
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                <span>KAS</span> LUXURY BOUTIQUE
+            </a>
+
+            <div class="header-actions">
+
+                <a href="index.html" aria-label="Home">
+                    <i class="fas fa-home"></i>
+                </a>
+
+                <a href="cart.html" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count" id="cartCount">0</span>
+                </a>
+
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <i class="fas fa-heart"></i>
+                    <span class="wishlist-count" id="wishlistCount">0</span>
+                </a>
+
+            </div>
+
+            <button class="menu-toggle" id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </button>
+
+        </div>
+
+
+        <nav class="navigation">
+
+            <ul class="nav-menu" id="navMenu">
+
+                <li><a href="index.html">Home</a></li>
+                <li><a href="shop.html">Shop</a></li>
+                <li><a href="men.html">Men</a></li>
+                <li><a href="women.html">Women</a></li>
+                <li><a href="shoes.html">Shoes</a></li>
+                <li><a href="accessories.html">Accessories</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- PRODUCT DETAILS -->
+
+    <main class="product-page">
+
+        <div class="breadcrumb">
+
+            <a href="index.html">Home</a>
+            /
+            <a href="shop.html">Shop</a>
+            /
+            <span id="breadcrumbProduct">Product Details</span>
+
+        </div>
+
+
+        <div id="productDetails">
+
+            <!-- JavaScript loads product information here -->
+
+        </div>
+
+    </main>
+
+
+    <!-- FOOTER -->
+
+    <footer class="footer">
+
+        <div class="footer-bottom">
+
+            <p>
+                &copy; <span id="currentYear"></span>
+                KAS LUXURY BOUTIQUE. All Rights Reserved.
+            </p>
+
+            <p>Elegance • Confidence • Style</p>
+
+        </div>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT FILES -->
+
+    <script src="js/products.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
+    <!-- PRODUCT DETAILS JAVASCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const productDetails =
+                document.getElementById("productDetails");
+
+            const breadcrumbProduct =
+                document.getElementById("breadcrumbProduct");
+
+            const params =
+                new URLSearchParams(window.location.search);
+
+            const productId = params.get("id");
+
+            const products = window.boutiqueProducts || [];
+
+            const product = products.find(item =>
+                String(item.id) === String(productId)
+            );
+
+
+            // PRODUCT NOT FOUND
+
+            if (!product) {
+
+                productDetails.innerHTML = `
+
+                    <div class="product-not-found">
+
+                        <i class="fas fa-box-open"></i>
+
+                        <h2>Product Not Found</h2>
+
+                        <p>
+                            Sorry, this product could not be found.
+                            Please return to our shop.
+                        </p>
+
+                        <a href="shop.html" class="back-to-shop">
+                            Back to Shop
+                        </a>
+
+                    </div>
+
+                `;
+
+                return;
+
+            }
+
+
+            // UPDATE PAGE TITLE
+
+            document.title =
+                `${product.name} | KAS LUXURY BOUTIQUE`;
+
+            breadcrumbProduct.textContent = product.name;
+
+
+            // PRODUCT DETAILS
+
+            const image = product.image ||
+                "https://placehold.co/700x800/111111/D4AF37?text=KAS+LUXURY";
+
+            const price =
+                Number(product.price).toLocaleString("en-ZM");
+
+            const oldPrice = product.oldPrice
+                ? `<span class="old-price">K${Number(product.oldPrice).toLocaleString("en-ZM")}</span>`
+                : "";
+
+            const description = product.description ||
+                "Discover premium style and quality with KAS LUXURY BOUTIQUE.";
+
+
+            productDetails.innerHTML = `
+
+                <section class="product-details-container">
+
+                    <!-- PRODUCT GALLERY -->
+
+                    <div class="product-gallery">
+
+                        <div class="main-product-image">
+
+                            <img
+                                src="${image}"
+                                alt="${product.name}"
+                                id="mainProductImage">
+
+                        </div>
+
+                        <div class="gallery-thumbnails">
+
+                            <button class="gallery-thumbnail active"
+                                type="button"
+                                aria-label="View product image">
+
+                                <img src="${image}" alt="${product.name}">
+
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- PRODUCT INFORMATION -->
+
+                    <div class="product-information">
+
+                        <p class="product-category-label">
+                            ${product.category || "Fashion"}
+                        </p>
+
+                        <h1>${product.name}</h1>
+
+                        <div class="product-rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="far fa-star"></i>
+
+                            <span>Product rating display</span>
+                        </div>
+
+                        <div class="product-detail-price">
+
+                            <span class="current-price">
+                                K${price}
+                            </span>
+
+                            ${oldPrice}
+
+                        </div>
+
+                        <p class="product-description">
+                            ${description}
+                        </p>
+
+                        <hr class="product-divider">
+
+
+                        <!-- SIZE OPTION -->
+
+                        <div class="option-group">
+
+                            <label for="productSize">
+                                Select Size
+                            </label>
+
+                            <select id="productSize">
+
+                                <option value="">Choose a size</option>
+                                <option value="XS">XS</option>
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                                <option value="XXL">XXL</option>
+
+                            </select>
+
+                        </div>
+
+
+                        <!-- QUANTITY -->
+
+                        <div class="option-group">
+
+                            <label>Quantity</label>
+
+                            <div class="quantity-control">
+
+                                <button type="button" id="decreaseQuantity">
+                                    -
+                                </button>
+
+                                <input
+                                    type="number"
+                                    id="productQuantity"
+                                    value="1"
+                                    min="1"
+                                    max="99"
+                                    readonly>
+
+                                <button type="button" id="increaseQuantity">
+                                    +
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- ACTION BUTTONS -->
+
+                        <div class="product-actions">
+
+                            <button
+                                class="detail-add-cart"
+                                id="detailAddToCart">
+
+                                <i class="fas fa-shopping-bag"></i>
+                                ADD TO CART
+
+                            </button>
+
+                            <button
+                                class="detail-wishlist"
+                                id="detailWishlist"
+                                aria-label="Add to wishlist">
+
+                                <i class="fas fa-heart"></i>
+
+                            </button>
+
+                        </div>
+
+
+                        <!-- SERVICE INFORMATION -->
+
+                        <div class="product-service-info">
+
+                            <div class="service-item">
+
+                                <i class="fas fa-shield-alt"></i>
+
+                                <span>Secure shopping experience</span>
+
+                            </div>
+
+                            <div class="service-item">
+
+                                <i class="fas fa-box"></i>
+
+                                <span>Delivery arrangements confirmed at checkout</span>
+
+                            </div>
+
+                            <div class="service-item">
+
+                                <i class="fas fa-headset"></i>
+
+                                <span>Customer support information coming soon</span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </section>
+
+            `;
+
+
+            // QUANTITY CONTROLS
+
+            const quantityInput =
+                document.getElementById("productQuantity");
+
+            document.getElementById("decreaseQuantity")
+                .addEventListener("click", () => {
+
+                    let quantity = Number(quantityInput.value);
+
+                    if (quantity > 1) {
+                        quantityInput.value = quantity - 1;
+                    }
+
+                });
+
+
+            document.getElementById("increaseQuantity")
+                .addEventListener("click", () => {
+
+                    let quantity = Number(quantityInput.value);
+
+                    if (quantity < 99) {
+                        quantityInput.value = quantity + 1;
+                    }
+
+                });
+
+
+            // ADD TO CART
+
+            document.getElementById("detailAddToCart")
+                .addEventListener("click", () => {
+
+                    const quantity =
+                        Number(quantityInput.value);
+
+                    if (!Number.isInteger(quantity) ||
+                        quantity < 1 || quantity > 99) {
+
+                        alert("Please select a valid quantity.");
+                        return;
+
+                    }
+
+                    if (typeof window.addToCart !== "function") {
+
+                        alert("Shopping cart is not available. Please refresh the page.");
+                        return;
+
+                    }
+
+                    for (let i = 0; i < quantity; i++) {
+                        window.addToCart(product.id);
+                    }
+
+                });
+
+
+            // WISHLIST
+
+            document.getElementById("detailWishlist")
+                .addEventListener("click", () => {
+
+                    if (typeof window.toggleWishlist === "function") {
+
+                        window.toggleWishlist(product.id);
+
+                    } else {
+
+                        alert("Wishlist is not available. Please refresh the page.");
+
+                    }
+
+                });
+
+        });
+
+    </script>
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
+

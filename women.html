@@ -1,0 +1,566 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta name="description" content="Discover elegant women's clothing, shoes and accessories at KAS LUXURY BOUTIQUE.">
+
+    <title>Women's Collection | KAS LUXURY BOUTIQUE</title>
+
+    <!-- GOOGLE FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+
+    <!-- MAIN CSS -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="animations.css">
+    <link rel="stylesheet" href="responsive.css">
+
+    <style>
+
+        /* WOMEN HERO */
+
+        .women-hero {
+            min-height: 420px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 70px 20px;
+
+            background:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.55),
+                    rgba(0, 0, 0, 0.78)
+                ),
+                url("https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1600&auto=format&fit=crop")
+                center/cover no-repeat;
+        }
+
+        .women-hero-content {
+            max-width: 750px;
+            color: #fff;
+        }
+
+        .women-hero-content .eyebrow {
+            color: #d4af37;
+            letter-spacing: 5px;
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .women-hero-content h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(38px, 7vw, 68px);
+            margin: 18px 0;
+        }
+
+        .women-hero-content p {
+            color: #eee;
+            line-height: 1.8;
+            margin-bottom: 28px;
+        }
+
+        .women-shop-btn {
+            display: inline-block;
+            background: #d4af37;
+            color: #080808;
+            padding: 14px 30px;
+            text-decoration: none;
+            font-weight: 800;
+            border-radius: 4px;
+            transition: 0.3s;
+        }
+
+        .women-shop-btn:hover {
+            background: #fff;
+            transform: translateY(-3px);
+        }
+
+
+        /* WOMEN COLLECTION */
+
+        .women-collection {
+            max-width: 1200px;
+            margin: auto;
+            padding: 65px 20px;
+        }
+
+        .women-heading {
+            text-align: center;
+            margin-bottom: 35px;
+        }
+
+        .women-heading span {
+            color: #b68b24;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 12px;
+            font-weight: 700;
+        }
+
+        .women-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(28px, 4vw, 42px);
+            margin: 12px 0;
+        }
+
+        .women-heading p {
+            opacity: 0.75;
+        }
+
+
+        /* PRODUCT GRID */
+
+        .women-products-grid {
+            display: grid;
+            grid-template-columns: repeat(4, minmax(0, 1fr));
+            gap: 24px;
+        }
+
+        .women-product-card {
+            background: var(--black-card, #171717);
+            border: 1px solid var(--border, #333);
+            overflow: hidden;
+            transition: 0.3s;
+        }
+
+        .women-product-card:hover {
+            transform: translateY(-6px);
+        }
+
+        .women-product-image {
+            position: relative;
+            height: 270px;
+            overflow: hidden;
+        }
+
+        .women-product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .women-product-card:hover img {
+            transform: scale(1.07);
+        }
+
+        .women-product-info {
+            padding: 18px;
+        }
+
+        .women-product-category {
+            color: #d4af37;
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .women-product-info h3 {
+            font-size: 16px;
+            margin: 9px 0;
+        }
+
+        .women-product-price {
+            color: #d4af37;
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .women-product-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .women-product-actions button {
+            flex: 1;
+            padding: 11px 8px;
+            border: none;
+            cursor: pointer;
+            font-weight: 700;
+            border-radius: 3px;
+        }
+
+        .women-add-btn {
+            background: #d4af37;
+            color: #080808;
+        }
+
+        .women-view-btn {
+            background: transparent;
+            color: var(--white, #fff);
+            border: 1px solid #d4af37 !important;
+        }
+
+
+        /* EMPTY COLLECTION */
+
+        .women-empty {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 50px 15px;
+            border: 1px solid var(--border, #333);
+            border-radius: 5px;
+        }
+
+        .women-empty i {
+            font-size: 35px;
+            color: #d4af37;
+            margin-bottom: 15px;
+        }
+
+        .women-back-shop {
+            display: inline-block;
+            margin-top: 18px;
+            color: #d4af37;
+        }
+
+
+        /* RESPONSIVE */
+
+        @media (max-width: 900px) {
+            .women-products-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 500px) {
+            .women-products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .women-product-image {
+                height: 320px;
+            }
+
+            .women-hero {
+                min-height: 320px;
+            }
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+    <!-- ANIMATED BACKGROUND -->
+
+    <div class="animated-background">
+
+        <div class="animated-words">
+
+            <div class="word-track">
+                <span>KAS LUXURY BOUTIQUE</span>
+                <span>WOMEN'S COLLECTION</span>
+                <span>ELEGANCE</span>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <div class="header-container">
+
+            <a href="index.html" class="logo">
+                KAS <span>LUXURY</span>
+            </a>
+
+            <button
+                class="menu-toggle"
+                id="menuToggle"
+                aria-label="Open navigation menu"
+                aria-expanded="false">
+
+                <i class="fas fa-bars"></i>
+
+            </button>
+
+            <nav>
+
+                <ul class="nav-menu" id="navMenu">
+
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                    <li>
+                        <a href="shop.html">Shop All</a>
+                    </li>
+
+                    <li>
+                        <a href="men.html">Men</a>
+                    </li>
+
+                    <li>
+                        <a href="women.html" class="active">Women</a>
+                    </li>
+
+                    <li>
+                        <a href="shoes.html">Shoes</a>
+                    </li>
+
+                    <li>
+                        <a href="accessories.html">Accessories</a>
+                    </li>
+
+                </ul>
+
+            </nav>
+
+            <div class="header-actions">
+
+                <a href="wishlist.html" aria-label="Wishlist">
+                    <i class="far fa-heart"></i>
+                    <span id="wishlistCount">0</span>
+                </a>
+
+                <a href="cart.html" aria-label="Shopping cart">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span id="cartCount">0</span>
+                </a>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- WOMEN HERO -->
+
+    <section class="women-hero">
+
+        <div class="women-hero-content">
+
+            <span class="eyebrow">
+                KAS LUXURY BOUTIQUE
+            </span>
+
+            <h1>Women's Collection</h1>
+
+            <p>
+                Discover beautiful fashion, timeless elegance
+                and modern styles designed to make every woman
+                feel confident and exceptional.
+            </p>
+
+            <a href="#womenProducts" class="women-shop-btn">
+                Explore Collection
+            </a>
+
+        </div>
+
+    </section>
+
+
+    <!-- WOMEN PRODUCTS -->
+
+    <section class="women-collection" id="womenProducts">
+
+        <div class="women-heading">
+
+            <span>Elegance Meets Confidence</span>
+
+            <h2>Shop Women's Fashion</h2>
+
+            <p>
+                Explore our women's fashion collection.
+            </p>
+
+        </div>
+
+        <div class="women-products-grid" id="womenProductsGrid">
+
+            <p>Loading women's collection...</p>
+
+        </div>
+
+    </section>
+
+
+    <!-- FOOTER -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+            <div>
+
+                <h2>KAS LUXURY BOUTIQUE</h2>
+
+                <p>
+                    Elegance • Confidence • Style
+                </p>
+
+            </div>
+
+            <div>
+
+                <h3>Quick Links</h3>
+
+                <a href="index.html">Home</a><br>
+
+                <a href="shop.html">Shop All</a><br>
+
+                <a href="men.html">Men's Collection</a><br>
+
+                <a href="women.html">Women's Collection</a>
+
+            </div>
+
+        </div>
+
+        <p class="footer-bottom">
+
+            &copy; <span id="currentYear"></span>
+
+            KAS LUXURY BOUTIQUE. All rights reserved.
+
+        </p>
+
+    </footer>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="js/products.js" defer></script>
+    <script src="js/navigation.js" defer></script>
+    <script src="js/app.js" defer></script>
+
+
+    <!-- WOMEN PRODUCTS SCRIPT -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const grid = document.getElementById("womenProductsGrid");
+
+            function displayWomenProducts() {
+
+                const products = window.boutiqueProducts || [];
+
+                const womenProducts = products.filter(product => {
+
+                    const category = String(product.category || "")
+                        .toLowerCase();
+
+                    return category.includes("women");
+
+                });
+
+                if (womenProducts.length === 0) {
+
+                    grid.innerHTML = `
+
+                        <div class="women-empty">
+
+                            <i class="fas fa-person-dress"></i>
+
+                            <h3>Women's Collection Coming Soon</h3>
+
+                            <p>
+                                New women's fashion products
+                                will be available here soon.
+                            </p>
+
+                            <a href="shop.html" class="women-back-shop">
+                                Explore All Products
+                            </a>
+
+                        </div>
+
+                    `;
+
+                    return;
+
+                }
+
+                grid.innerHTML = womenProducts.map(product => {
+
+                    const price = Number(product.price || 0)
+                        .toLocaleString("en-ZM");
+
+                    return `
+
+                        <article class="women-product-card">
+
+                            <div class="women-product-image">
+
+                                <img
+                                    src="${product.image}"
+                                    alt="${product.name}"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                            <div class="women-product-info">
+
+                                <span class="women-product-category">
+                                    ${product.category}
+                                </span>
+
+                                <h3>${product.name}</h3>
+
+                                <div class="women-product-price">
+                                    K${price}
+                                </div>
+
+                                <div class="women-product-actions">
+
+                                    <button
+                                        class="women-add-btn"
+                                        onclick="addToCart('${product.id}')">
+
+                                        <i class="fas fa-shopping-bag"></i>
+                                        Add to Cart
+
+                                    </button>
+
+                                    <button
+                                        class="women-view-btn"
+                                        onclick="window.location.href='product.html?id=${encodeURIComponent(product.id)}'">
+
+                                        View
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </article>
+
+                    `;
+
+                }).join("");
+
+            }
+
+            displayWomenProducts();
+
+        });
+
+    </script>
+<script src="products.js"></script>
+    <script src="navigation.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
